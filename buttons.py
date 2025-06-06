@@ -1,20 +1,23 @@
 import flet as ft
 from flet import *
 from tags_functions import (get_profile_button_clicked, update_tags_11_functions,
-                            update_tags_10_functions, update_tags_9_functions, update_tags_3_functions,
-                            no_hint_functions, collection_gacha_tags_functions, weapon_lto_functions,
-                            shiny_functions, theo_functions, lto_oto_gc_functions, among_functions,
-                            labyrinth_functions, bogo_functions, new_shiny_functions,
-                            new_among_functions, my_tags_functions, comeback_functions, manual_tags)
+                                           update_tags_10_functions, update_tags_9_functions, update_tags_3_functions,
+                                           no_hint_functions, collection_gacha_tags_functions, weapon_lto_functions,
+                                           shiny_functions, theo_functions, lto_oto_gc_functions, among_functions,
+                                           labyrinth_functions, bogo_functions, new_shiny_functions,
+                                           new_among_functions, my_tags_functions, comeback_functions, manual_tags,
+                                           update_tags_7_functions, update_tags_10_functions_raskat)
 from json_functions import (bans_11_functions, bans_10_functions, bans_9_functions, bans_3_functions,
-                            tickets_criteria_functions, no_hint_bans_functions,
-                            no_hint_balance_functions, bcp_previous_functions, bcp_actual_functions,
-                            cgp_6_functions, cgp_9_functions, check_all_bans_other_wo_field_functions,
-                            check_all_bans_other_with_field_functions, check_oto_2_functions,
-                            compare_functions, among_new_ts_functions, among_average_functions,
-                            labyrinth_balance_ww_functions, labyrinth_balance_cn_functions,
-                            tickets_balance_functions_11, tickets_balance_functions_10,
-                            tickets_balance_functions_9, tickets_balance_functions_3)
+                                           tickets_criteria_functions, no_hint_bans_functions,
+                                           no_hint_balance_functions, bcp_previous_functions, bcp_actual_functions,
+                                           cgp_6_functions, cgp_9_functions, check_all_bans_other_wo_field_functions,
+                                           check_all_bans_other_with_field_functions, check_oto_2_functions,
+                                           compare_functions, among_new_ts_functions, among_average_functions,
+                                           labyrinth_balance_ww_functions, labyrinth_balance_cn_functions,
+                                           tickets_balance_functions_11, tickets_balance_functions_10,
+                                           tickets_balance_functions_9, tickets_balance_functions_3,
+                                           tickets_balance_functions_10_extra, bans_7_functions,
+                                           tickets_balance_functions_7)
 
 
 class PageManager:
@@ -41,7 +44,8 @@ class GetProfileLine(ft.TextField):
 
 class SendRequestButton(ft.CupertinoButton):
     def __init__(self, content, bgcolor, on_click, alignment=ft.alignment.top_left,
-                 border_radius=ft.border_radius.all(15), opacity_on_click=0.5):
+                 border_radius=ft.border_radius.all(15),
+                 opacity_on_click=0.5):
         super().__init__()
         self.content = content
         self.bgcolor = bgcolor
@@ -138,6 +142,28 @@ update_tags_10_buttons = {
     "update_tags_10_10": SendRequestButton(ft.Text("Update tags 10", color=ft.colors.WHITE), ft.colors.RED,
                                            update_tags_10_functions["function_10"])}
 
+update_tags_10_buttons_raskat = {
+    "update_tags_10_1": SendRequestButton(ft.Text("Update tags 1", color=ft.colors.WHITE), ft.colors.GREEN,
+                                          update_tags_10_functions_raskat["function_1"]),
+    "update_tags_10_2": SendRequestButton(ft.Text("Update tags 2", color=ft.colors.WHITE), ft.colors.GREEN,
+                                          update_tags_10_functions_raskat["function_2"]),
+    "update_tags_10_3": SendRequestButton(ft.Text("Update tags 3", color=ft.colors.WHITE), ft.colors.GREEN,
+                                          update_tags_10_functions_raskat["function_3"]),
+    "update_tags_10_4": SendRequestButton(ft.Text("Update tags 4", color=ft.colors.WHITE), ft.colors.GREEN,
+                                          update_tags_10_functions_raskat["function_4"]),
+    "update_tags_10_5": SendRequestButton(ft.Text("Update tags 5", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                          update_tags_10_functions_raskat["function_5"]),
+    "update_tags_10_6": SendRequestButton(ft.Text("Update tags 6", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                          update_tags_10_functions_raskat["function_6"]),
+    "update_tags_10_7": SendRequestButton(ft.Text("Update tags 7", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                          update_tags_10_functions_raskat["function_7"]),
+    "update_tags_10_8": SendRequestButton(ft.Text("Update tags 8", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                          update_tags_10_functions_raskat["function_8"]),
+    "update_tags_10_9": SendRequestButton(ft.Text("Update tags 9", color=ft.colors.WHITE), ft.colors.RED,
+                                          update_tags_10_functions_raskat["function_9"]),
+    "update_tags_10_10": SendRequestButton(ft.Text("Update tags 10", color=ft.colors.WHITE), ft.colors.RED,
+                                           update_tags_10_functions_raskat["function_10"])}
+
 update_tags_9_buttons = {
     "update_tags_9_1": SendRequestButton(ft.Text("Update tags 1", color=ft.colors.WHITE), ft.colors.GREEN,
                                          update_tags_9_functions["function_1"]),
@@ -157,6 +183,22 @@ update_tags_9_buttons = {
                                          update_tags_9_functions["function_8"]),
     "update_tags_9_9": SendRequestButton(ft.Text("Update tags 9", color=ft.colors.WHITE), ft.colors.RED,
                                          update_tags_9_functions["function_9"])}
+
+update_tags_7_buttons = {
+    "update_tags_7_1": SendRequestButton(ft.Text("Update tags 1", color=ft.colors.WHITE), ft.colors.GREEN,
+                                         update_tags_7_functions["function_1"]),
+    "update_tags_7_2": SendRequestButton(ft.Text("Update tags 2", color=ft.colors.WHITE), ft.colors.GREEN,
+                                         update_tags_7_functions["function_2"]),
+    "update_tags_7_3": SendRequestButton(ft.Text("Update tags 3", color=ft.colors.WHITE), ft.colors.GREEN,
+                                         update_tags_7_functions["function_3"]),
+    "update_tags_7_4": SendRequestButton(ft.Text("Update tags 4", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                         update_tags_7_functions["function_4"]),
+    "update_tags_7_5": SendRequestButton(ft.Text("Update tags 5", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                         update_tags_7_functions["function_5"]),
+    "update_tags_7_6": SendRequestButton(ft.Text("Update tags 6", color=ft.colors.WHITE), ft.colors.ORANGE,
+                                         update_tags_7_functions["function_6"]),
+    "update_tags_7_7": SendRequestButton(ft.Text("Update tags 7", color=ft.colors.WHITE), ft.colors.RED,
+                                         update_tags_7_functions["function_7"])}
 
 update_tags_3_buttons = {
     "update_tags_3_1": SendRequestButton(ft.Text("Update tags 1", color=ft.colors.WHITE), ft.colors.GREEN,
@@ -437,6 +479,47 @@ choose_json_button_9 = ft.Row(
     ]
 )
 
+tickets_bans_7_buttons = {
+    "open_json_button": ft.FilePicker(on_result=bans_7_functions["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        text="Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=bans_7_functions["download_json"]
+    ),
+    "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET, on_click=bans_7_functions["reset"]),
+    "ban_7_1": BanButton(),
+    "ban_7_2": BanButton(),
+    "ban_7_3": BanButton(),
+    "ban_7_4": BanButton(),
+    "ban_7_5": BanButton(),
+    "ban_7_6": BanButton(),
+    "ban_7_7": BanButton(),
+    "ban_7_8": BanButton(),
+    "ban_7_9": BanButton(),
+    "ban_7_10": BanButton(),
+    "ban_7_11": BanButton(),
+    "ban_7_12": BanButton(),
+    "ban_7_13": BanButton(),
+    "ban_7_14": BanButton(),
+    "check_all_bans_button": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
+                                               on_click=bans_7_functions["check_all"])
+}
+
+choose_json_button_7 = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: tickets_bans_7_buttons["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        tickets_bans_7_buttons["selected_files"]
+    ]
+)
+
 tickets_bans_3_buttons = {
     "open_json_button": ft.FilePicker(on_result=bans_3_functions["open_json"]),
     "selected_files": ft.Text(),
@@ -617,9 +700,9 @@ choose_json_button_no_hint_balance = ft.Row(
 
 bcp_previous_buttons = {
     "description": ft.Text(
-        f"Здесь проверяются только BCP пред. апдейта; проверяется все, кроме дат и версий."
+        f"Здесь проверяются только BCP пред. апдейта; проверяется все, кроме дат."
         + "\n" +
-        "На даше проверить даты и версии, ловить в игре необязательно."),
+        "На даше проверить date_begin и date_finish, ловить в игре необязательно."),
     "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
                                       on_click=bcp_previous_functions["reset"]),
     "open_json_button": ft.FilePicker(on_result=bcp_previous_functions["open_json"]),
@@ -660,14 +743,48 @@ choose_json_button_bcp_previous = ft.Row(
 )
 
 bcp_actual_buttons = {
-    "description": ft.Text(f"Здесь проверяются только BCP текущего апдейта; проверяются packname, conditions, " +
-                           "platform и criteria." + "\n" + "Перед нажатием на Check all в строку skin_id вставить " +
-                           "скин айди актуального bcp." + "\n" + "На даше проверить date_begin и date_finish, " +
-                           "поймать все офферы в игре и проверить наполнение."),
+    "description": ft.Text(f"Здесь проверяются только BCP текущего апдейта; проверяется все, кроме " +
+                           "дат и версий." + "\n" + "Перед нажатием на Check all в строку skin_id вставить " +
+                           "скин айди актуального bcp, а в day выбрать день апдейта (смотри в таблице офферов)." + "\n" +
+                           "На даше проверить date_begin, date_finish и версии. В игре ловить необязательно."),
     "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET, on_click=bcp_actual_functions["reset"]),
     "open_json_button": ft.FilePicker(on_result=bcp_actual_functions["open_json"]),
     "selected_files": ft.Text(),
     "skin_id_field": ft.TextField(width=300, label="skin id", hint_text="Введи skin_id. Пример: 1094"),
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
+        options=[
+            ft.dropdown.Option('0'),
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2'),
+            ft.dropdown.Option('3'),
+            ft.dropdown.Option('4'),
+            ft.dropdown.Option('5'),
+            ft.dropdown.Option('6'),
+            ft.dropdown.Option('7'),
+            ft.dropdown.Option('8'),
+            ft.dropdown.Option('9'),
+            ft.dropdown.Option('10'),
+            ft.dropdown.Option('11'),
+            ft.dropdown.Option('12'),
+            ft.dropdown.Option('13'),
+            ft.dropdown.Option('14'),
+            ft.dropdown.Option('15'),
+            ft.dropdown.Option('16'),
+            ft.dropdown.Option('17'),
+            ft.dropdown.Option('18'),
+            ft.dropdown.Option('19'),
+            ft.dropdown.Option('20'),
+            ft.dropdown.Option('21'),
+            ft.dropdown.Option('22'),
+            ft.dropdown.Option('23'),
+            ft.dropdown.Option('24'),
+            ft.dropdown.Option('25'),
+            ft.dropdown.Option('26'),
+            ft.dropdown.Option('27')
+        ],
+    ),
     "upload_json_button": ft.ElevatedButton(
         "Загрузить JSON",
         icon=ft.icons.UPLOAD,
@@ -703,8 +820,7 @@ choose_json_button_bcp_actual = ft.Row(
 cgp_6_buttons = {
     "description": ft.Text(
         "Здесь проверяются CGP в кол-ве 6 штук (запускаются в начале апдейта): проверяется всё, кроме дат и " +
-        "наполнения последнего пака." + "\n" + "На даше проверить date_begin и date_finish, в игре достаточно " +
-        "поймать только последний пак."),
+        "версий." + "\n" + "На даше проверить даты и версии, в игре ловить необязательно."),
     "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET, on_click=cgp_6_functions["reset"]),
     "open_json_button": ft.FilePicker(on_result=cgp_6_functions["open_json"]),
     "selected_files": ft.Text(),
@@ -713,6 +829,16 @@ cgp_6_buttons = {
         icon=ft.icons.UPLOAD,
         on_click=cgp_6_functions["download_json"]
     ),
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
+        options=[
+            ft.dropdown.Option('0'),
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2'),
+            ft.dropdown.Option('3')
+        ],
+    ),
     "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
                                           on_click=cgp_6_functions["check_all"]),
     "button_1": BanButton(),
@@ -720,8 +846,7 @@ cgp_6_buttons = {
     "button_3": BanButton(),
     "button_4": BanButton(),
     "button_5": BanButton(),
-    "button_6": BanButton(),
-    'dynamic_items': ft.Text()
+    "button_6": BanButton()
 }
 
 choose_json_button_cgp_6 = ft.Row(
@@ -742,14 +867,44 @@ cgp_9_buttons = {
     "open_json_button": ft.FilePicker(on_result=cgp_9_functions["open_json"]),
     "selected_files": ft.Text(),
     "description": ft.Text(
-        "Здесь проверяются CGP в кол-ве 9 штук: проверяется всё, кроме дат и наполнения последнего пака."
-        + "\n" + "На даше проверить date_begin и date_finish, в игре достаточно поймать только последний пак."),
+        "Здесь проверяются CGP в кол-ве 9 штук: проверяется всё, кроме дат и версий."
+        + "\n" + "На даше проверить даты и версии, в игре ловить необязательно."),
     "upload_json_button": ft.ElevatedButton(
         "Загрузить JSON",
         icon=ft.icons.UPLOAD,
         on_click=cgp_9_functions["download_json"]
     ),
     "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET, on_click=cgp_9_functions["reset"]),
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
+        options=[
+            ft.dropdown.Option('4'),
+            ft.dropdown.Option('5'),
+            ft.dropdown.Option('6'),
+            ft.dropdown.Option('7'),
+            ft.dropdown.Option('8'),
+            ft.dropdown.Option('9'),
+            ft.dropdown.Option('10'),
+            ft.dropdown.Option('11'),
+            ft.dropdown.Option('12'),
+            ft.dropdown.Option('13'),
+            ft.dropdown.Option('14'),
+            ft.dropdown.Option('15'),
+            ft.dropdown.Option('16'),
+            ft.dropdown.Option('17'),
+            ft.dropdown.Option('18'),
+            ft.dropdown.Option('19'),
+            ft.dropdown.Option('20'),
+            ft.dropdown.Option('21'),
+            ft.dropdown.Option('22'),
+            ft.dropdown.Option('23'),
+            ft.dropdown.Option('24'),
+            ft.dropdown.Option('25'),
+            ft.dropdown.Option('26'),
+            ft.dropdown.Option('27')
+        ],
+    ),
     "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
                                           on_click=cgp_9_functions["check_all"]),
     "button_1": BanButton(),
@@ -760,8 +915,7 @@ cgp_9_buttons = {
     "button_6": BanButton(),
     "button_7": BanButton(),
     "button_8": BanButton(),
-    "button_9": BanButton(),
-    'dynamic_items': ft.Text()
+    "button_9": BanButton()
 }
 
 choose_json_button_cgp_9 = ft.Row(
@@ -1036,7 +1190,15 @@ among_balance_new_tc_buttons = {
     "button_2": BanButton(),
     "button_3": BanButton(),
     "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
-                                          on_click=among_new_ts_functions["check_all"])
+                                          on_click=among_new_ts_functions["check_all"]),
+    'type': ft.Dropdown(
+        width=300,
+        label='type',
+        options=[
+            ft.dropdown.Option('hanami'),
+            ft.dropdown.Option('songkran')
+        ],
+    )
 }
 
 choose_json_button_among_balance_new_ts = ft.Row(
@@ -1102,7 +1264,15 @@ labyrinth_balance_ww_buttons = {
     "button_3": BanButton(),
     "button_4": BanButton(),
     "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
-                                          on_click=labyrinth_balance_ww_functions["check_all"])
+                                          on_click=labyrinth_balance_ww_functions["check_all"]),
+    'type': ft.Dropdown(
+        width=300,
+        label='type',
+        options=[
+            ft.dropdown.Option('summer day'),
+            ft.dropdown.Option("father's day")
+        ]
+    )
 }
 
 choose_json_button_labyrinth_balance_ww = ft.Row(
@@ -1135,7 +1305,15 @@ labyrinth_balance_cn_buttons = {
     "button_3": BanButton(),
     "button_4": BanButton(),
     "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
-                                          on_click=labyrinth_balance_cn_functions["check_all"])
+                                          on_click=labyrinth_balance_cn_functions["check_all"]),
+    'type': ft.Dropdown(
+        width=300,
+        label='type',
+        options=[
+            ft.dropdown.Option('summer day'),
+            ft.dropdown.Option("father's day")
+        ]
+    )
 }
 
 choose_json_button_labyrinth_balance_cn = ft.Row(
@@ -1153,52 +1331,28 @@ choose_json_button_labyrinth_balance_cn = ft.Row(
 )
 
 tickets_balance_checker_buttons_11 = {
-    "items_id_lto": ft.TextField(width=300, label='LTO items id', hint_text='id итемов в LTO через запятую'),
-    "items_id_oto": ft.TextField(width=300, label='OTO items id', hint_text='id итемов в OTO через запятую'),
     "button_1": BanButton(),
-    "field_lto_1": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_2": BanButton(),
-    "field_lto_2": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_3": BanButton(),
-    "field_lto_3": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_4": BanButton(),
-    "field_lto_4": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_5": BanButton(),
-    "field_lto_5": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_6": BanButton(),
-    "field_lto_6": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_7": BanButton(),
-    "field_lto_7": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_8": BanButton(),
-    "field_lto_8": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_9": BanButton(),
-    "field_lto_9": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_10": BanButton(),
-    "field_lto_10": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_11": BanButton(),
-    "field_lto_11": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_12": BanButton(),
-    "field_oto_12": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_13": BanButton(),
-    "field_oto_13": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_14": BanButton(),
-    "field_oto_14": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_15": BanButton(),
-    "field_oto_15": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_16": BanButton(),
-    "field_oto_16": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_17": BanButton(),
-    "field_oto_17": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_18": BanButton(),
-    "field_oto_18": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_19": BanButton(),
-    "field_oto_19": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_20": BanButton(),
-    "field_oto_20": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_21": BanButton(),
-    "field_oto_21": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_22": BanButton(),
-    "field_oto_22": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "check_all": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
                                    on_click=tickets_balance_functions_11["check_all"]),
     "open_json_button": ft.FilePicker(on_result=tickets_balance_functions_11["open_json"]),
@@ -1208,38 +1362,22 @@ tickets_balance_checker_buttons_11 = {
         icon=ft.icons.UPLOAD,
         on_click=tickets_balance_functions_11["download_json"]
     ),
-    "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
-                                      on_click=tickets_balance_functions_11["reset"]),
-    'pattern': ft.Dropdown(
-        width=300,
-        label='pattern',
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
         options=[
-            ft.dropdown.Option('50,75,100,125,150,200,250,275,300,400,500'),
-            ft.dropdown.Option('75,100,150,175,200,225,250,275,300,400,500')
-        ],
+            ft.dropdown.Option('0'),
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2'),
+            ft.dropdown.Option('3'),
+            ft.dropdown.Option('4'),
+            ft.dropdown.Option('5'),
+            ft.dropdown.Option('6'),
+            ft.dropdown.Option('7')
+        ]
     ),
-    'bundle_1': BundleButton(),
-    'bundle_2': BundleButton(),
-    'bundle_3': BundleButton(),
-    'bundle_4': BundleButton(),
-    'bundle_5': BundleButton(),
-    'bundle_6': BundleButton(),
-    'bundle_7': BundleButton(),
-    'bundle_8': BundleButton(),
-    'bundle_9': BundleButton(),
-    'bundle_10': BundleButton(),
-    'bundle_11': BundleButton(),
-    'bundle_12': BundleButton(),
-    'bundle_13': BundleButton(),
-    'bundle_14': BundleButton(),
-    'bundle_15': BundleButton(),
-    'bundle_16': BundleButton(),
-    'bundle_17': BundleButton(),
-    'bundle_18': BundleButton(),
-    'bundle_19': BundleButton(),
-    'bundle_20': BundleButton(),
-    'bundle_21': BundleButton(),
-    'bundle_22': BundleButton()
+    "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=tickets_balance_functions_11["reset"])
 }
 
 choose_json_button_tickets_balance_checker_11 = ft.Row(
@@ -1257,48 +1395,26 @@ choose_json_button_tickets_balance_checker_11 = ft.Row(
 )
 
 tickets_balance_checker_buttons_10 = {
-    "items_id_lto": ft.TextField(width=300, label='LTO items id', hint_text='id итемов в LTO через запятую'),
-    "items_id_oto": ft.TextField(width=300, label='OTO items id', hint_text='id итемов в OTO через запятую'),
     "button_1": BanButton(),
-    "field_lto_1": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_2": BanButton(),
-    "field_lto_2": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_3": BanButton(),
-    "field_lto_3": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_4": BanButton(),
-    "field_lto_4": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_5": BanButton(),
-    "field_lto_5": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_6": BanButton(),
-    "field_lto_6": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_7": BanButton(),
-    "field_lto_7": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_8": BanButton(),
-    "field_lto_8": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_9": BanButton(),
-    "field_lto_9": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_10": BanButton(),
-    "field_lto_10": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_11": BanButton(),
-    "field_oto_11": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_12": BanButton(),
-    "field_oto_12": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_13": BanButton(),
-    "field_oto_13": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_14": BanButton(),
-    "field_oto_14": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_15": BanButton(),
-    "field_oto_15": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_16": BanButton(),
-    "field_oto_16": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_17": BanButton(),
-    "field_oto_17": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_18": BanButton(),
-    "field_oto_18": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_19": BanButton(),
-    "field_oto_19": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_20": BanButton(),
-    "field_oto_20": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "check_all": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
                                    on_click=tickets_balance_functions_10["check_all"]),
     "open_json_button": ft.FilePicker(on_result=tickets_balance_functions_10["open_json"]),
@@ -1310,38 +1426,23 @@ tickets_balance_checker_buttons_10 = {
     ),
     "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
                                       on_click=tickets_balance_functions_10["reset"]),
-    'pattern': ft.Dropdown(
-        width=300,
-        label='pattern',
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
         options=[
-            ft.dropdown.Option('50,75,125,150,175,200,225,250,300,400'),
-            ft.dropdown.Option('75,100,150,175,225,250,275,300,350,450'),
-            ft.dropdown.Option('75,100,150,175,200,225,250,275,300,400'),
-            ft.dropdown.Option('100,125,150,175,225,250,275,300,350,450'),
-            ft.dropdown.Option('100,125,150,175,200,225,250,275,300,400'),
-            ft.dropdown.Option('100,125,150,175,225,250,275,300,350,450')
-        ],
-    ),
-    'bundle_1': BundleButton(),
-    'bundle_2': BundleButton(),
-    'bundle_3': BundleButton(),
-    'bundle_4': BundleButton(),
-    'bundle_5': BundleButton(),
-    'bundle_6': BundleButton(),
-    'bundle_7': BundleButton(),
-    'bundle_8': BundleButton(),
-    'bundle_9': BundleButton(),
-    'bundle_10': BundleButton(),
-    'bundle_11': BundleButton(),
-    'bundle_12': BundleButton(),
-    'bundle_13': BundleButton(),
-    'bundle_14': BundleButton(),
-    'bundle_15': BundleButton(),
-    'bundle_16': BundleButton(),
-    'bundle_17': BundleButton(),
-    'bundle_18': BundleButton(),
-    'bundle_19': BundleButton(),
-    'bundle_20': BundleButton()
+            ft.dropdown.Option('8'),
+            ft.dropdown.Option('9'),
+            ft.dropdown.Option('10'),
+            ft.dropdown.Option('11'),
+            ft.dropdown.Option('12'),
+            ft.dropdown.Option('13'),
+            ft.dropdown.Option('14'),
+            ft.dropdown.Option('15'),
+            ft.dropdown.Option('16'),
+            ft.dropdown.Option('17'),
+            ft.dropdown.Option('18')
+        ]
+    )
 }
 
 choose_json_button_tickets_balance_checker_10 = ft.Row(
@@ -1358,45 +1459,107 @@ choose_json_button_tickets_balance_checker_10 = ft.Row(
     ]
 )
 
-tickets_balance_checker_buttons_9 = {
-    "items_id_lto": ft.TextField(width=300, label='LTO items id', hint_text='id итемов в LTO через запятую'),
-    "items_id_oto": ft.TextField(width=300, label='OTO items id', hint_text='id итемов в OTO через запятую'),
+tickets_balance_checker_buttons_10_extra = {
     "button_1": BanButton(),
-    "field_lto_1": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_2": BanButton(),
-    "field_lto_2": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_3": BanButton(),
-    "field_lto_3": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_4": BanButton(),
-    "field_lto_4": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_5": BanButton(),
-    "field_lto_5": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_6": BanButton(),
-    "field_lto_6": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_7": BanButton(),
-    "field_lto_7": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_8": BanButton(),
-    "field_lto_8": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_9": BanButton(),
-    "field_lto_9": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_10": BanButton(),
-    "field_oto_10": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_11": BanButton(),
-    "field_oto_11": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_12": BanButton(),
-    "field_oto_12": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_13": BanButton(),
-    "field_oto_13": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_14": BanButton(),
-    "field_oto_14": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_15": BanButton(),
-    "field_oto_15": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_16": BanButton(),
-    "field_oto_16": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_17": BanButton(),
-    "field_oto_17": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_18": BanButton(),
-    "field_oto_18": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
+    "button_19": BanButton(),
+    "button_20": BanButton(),
+    "check_all": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
+                                   on_click=tickets_balance_functions_10_extra["check_all"]),
+    "open_json_button": ft.FilePicker(on_result=tickets_balance_functions_10_extra["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        text="Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=tickets_balance_functions_10_extra["download_json"]
+    ),
+    "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=tickets_balance_functions_10_extra["reset"]),
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
+        options=[
+            ft.dropdown.Option('0'),
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2'),
+            ft.dropdown.Option('3'),
+            ft.dropdown.Option('4'),
+            ft.dropdown.Option('5'),
+            ft.dropdown.Option('6'),
+            ft.dropdown.Option('7'),
+            ft.dropdown.Option('8'),
+            ft.dropdown.Option('9'),
+            ft.dropdown.Option('10'),
+            ft.dropdown.Option('11'),
+            ft.dropdown.Option('12'),
+            ft.dropdown.Option('13'),
+            ft.dropdown.Option('14'),
+            ft.dropdown.Option('15'),
+            ft.dropdown.Option('16'),
+            ft.dropdown.Option('17'),
+            ft.dropdown.Option('18'),
+            ft.dropdown.Option('19'),
+            ft.dropdown.Option('20'),
+            ft.dropdown.Option('21'),
+            ft.dropdown.Option('22'),
+            ft.dropdown.Option('23'),
+            ft.dropdown.Option('24'),
+            ft.dropdown.Option('25'),
+            ft.dropdown.Option('26'),
+            ft.dropdown.Option('27')
+        ]
+    )
+}
+
+choose_json_button_tickets_balance_checker_10_extra = ft.Row(
+    [
+        ft.ElevatedButton(
+            text="Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: tickets_balance_checker_buttons_10_extra["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        tickets_balance_checker_buttons_10_extra["selected_files"]
+    ]
+)
+
+tickets_balance_checker_buttons_9 = {
+    "button_1": BanButton(),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "button_5": BanButton(),
+    "button_6": BanButton(),
+    "button_7": BanButton(),
+    "button_8": BanButton(),
+    "button_9": BanButton(),
+    "button_10": BanButton(),
+    "button_11": BanButton(),
+    "button_12": BanButton(),
+    "button_13": BanButton(),
+    "button_14": BanButton(),
+    "button_15": BanButton(),
+    "button_16": BanButton(),
+    "button_17": BanButton(),
+    "button_18": BanButton(),
     "check_all": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
                                    on_click=tickets_balance_functions_9["check_all"]),
     "open_json_button": ft.FilePicker(on_result=tickets_balance_functions_9["open_json"]),
@@ -1408,33 +1571,18 @@ tickets_balance_checker_buttons_9 = {
     ),
     "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
                                       on_click=tickets_balance_functions_9["reset"]),
-    'pattern': ft.Dropdown(
-        width=300,
-        label='pattern',
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
         options=[
-            ft.dropdown.Option('100,125,150,175,200,225,250,300,400'),
-            ft.dropdown.Option('50,75,100,125,200,225,250,300,400'),
-            ft.dropdown.Option('50,75,100,125,150,200,225,250,350')
-        ],
-    ),
-    'bundle_1': BundleButton(),
-    'bundle_2': BundleButton(),
-    'bundle_3': BundleButton(),
-    'bundle_4': BundleButton(),
-    'bundle_5': BundleButton(),
-    'bundle_6': BundleButton(),
-    'bundle_7': BundleButton(),
-    'bundle_8': BundleButton(),
-    'bundle_9': BundleButton(),
-    'bundle_10': BundleButton(),
-    'bundle_11': BundleButton(),
-    'bundle_12': BundleButton(),
-    'bundle_13': BundleButton(),
-    'bundle_14': BundleButton(),
-    'bundle_15': BundleButton(),
-    'bundle_16': BundleButton(),
-    'bundle_17': BundleButton(),
-    'bundle_18': BundleButton()
+            ft.dropdown.Option('19'),
+            ft.dropdown.Option('20'),
+            ft.dropdown.Option('21'),
+            ft.dropdown.Option('22'),
+            ft.dropdown.Option('23'),
+            ft.dropdown.Option('24')
+        ]
+    )
 }
 
 choose_json_button_tickets_balance_checker_9 = ft.Row(
@@ -1451,21 +1599,89 @@ choose_json_button_tickets_balance_checker_9 = ft.Row(
     ]
 )
 
-tickets_balance_checker_buttons_3 = {
-    "items_id_lto": ft.TextField(width=300, label='LTO items id', hint_text='id итемов в LTO через запятую'),
-    "items_id_oto": ft.TextField(width=300, label='OTO items id', hint_text='id итемов в OTO через запятую'),
+tickets_balance_checker_buttons_7 = {
     "button_1": BanButton(),
-    "field_lto_1": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_2": BanButton(),
-    "field_lto_2": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_3": BanButton(),
-    "field_lto_3": ft.TextField(width=300, label="lto amount", hint_text="кол-во итемов через запятую"),
     "button_4": BanButton(),
-    "field_oto_4": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_5": BanButton(),
-    "field_oto_5": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
     "button_6": BanButton(),
-    "field_oto_6": ft.TextField(width=300, label="oto amount", hint_text="кол-во итемов через запятую"),
+    "button_7": BanButton(),
+    "button_8": BanButton(),
+    "button_9": BanButton(),
+    "button_10": BanButton(),
+    "button_11": BanButton(),
+    "button_12": BanButton(),
+    "button_13": BanButton(),
+    "button_14": BanButton(),
+    "check_all": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
+                                   on_click=tickets_balance_functions_7["check_all"]),
+    "open_json_button": ft.FilePicker(on_result=tickets_balance_functions_7["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        text="Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=tickets_balance_functions_7["download_json"]
+    ),
+    "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=tickets_balance_functions_7["reset"]),
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
+        options=[
+            ft.dropdown.Option('0'),
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2'),
+            ft.dropdown.Option('3'),
+            ft.dropdown.Option('4'),
+            ft.dropdown.Option('5'),
+            ft.dropdown.Option('6'),
+            ft.dropdown.Option('7'),
+            ft.dropdown.Option('8'),
+            ft.dropdown.Option('9'),
+            ft.dropdown.Option('10'),
+            ft.dropdown.Option('11'),
+            ft.dropdown.Option('12'),
+            ft.dropdown.Option('13'),
+            ft.dropdown.Option('14'),
+            ft.dropdown.Option('15'),
+            ft.dropdown.Option('16'),
+            ft.dropdown.Option('17'),
+            ft.dropdown.Option('18'),
+            ft.dropdown.Option('19'),
+            ft.dropdown.Option('20'),
+            ft.dropdown.Option('21'),
+            ft.dropdown.Option('22'),
+            ft.dropdown.Option('23'),
+            ft.dropdown.Option('24'),
+            ft.dropdown.Option('25'),
+            ft.dropdown.Option('26'),
+            ft.dropdown.Option('27')
+        ]
+    )
+}
+
+choose_json_button_tickets_balance_checker_7 = ft.Row(
+    [
+        ft.ElevatedButton(
+            text="Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: tickets_balance_checker_buttons_7["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        tickets_balance_checker_buttons_7["selected_files"]
+    ]
+)
+
+tickets_balance_checker_buttons_3 = {
+    "button_1": BanButton(),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "button_5": BanButton(),
+    "button_6": BanButton(),
     "check_all": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
                                    on_click=tickets_balance_functions_3["check_all"]),
     "open_json_button": ft.FilePicker(on_result=tickets_balance_functions_3["open_json"]),
@@ -1477,21 +1693,15 @@ tickets_balance_checker_buttons_3 = {
     ),
     "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
                                       on_click=tickets_balance_functions_3["reset"]),
-    'pattern': ft.Dropdown(
-        width=300,
-        label='pattern',
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
         options=[
-            ft.dropdown.Option('100,150,350'),
-            ft.dropdown.Option('100,150,250'),
-            ft.dropdown.Option('100,150,200')
-        ],
-    ),
-    'bundle_1': BundleButton(),
-    'bundle_2': BundleButton(),
-    'bundle_3': BundleButton(),
-    'bundle_4': BundleButton(),
-    'bundle_5': BundleButton(),
-    'bundle_6': BundleButton()
+            ft.dropdown.Option('25'),
+            ft.dropdown.Option('26'),
+            ft.dropdown.Option('27')
+        ]
+    )
 }
 
 choose_json_button_tickets_balance_checker_3 = ft.Row(

@@ -1,30 +1,35 @@
 import flet as ft
 from flet import *
 from buttons import (PageManager, get_profile_buttons, update_tags_11_buttons, update_tags_10_buttons,
-                     update_tags_9_buttons, update_tags_3_buttons, no_hint_buttons,
-                     collection_gacha_tags_buttons, weapon_lto_buttons, shiny_buttons, theo_buttons,
-                     lto_oto_gc_buttons, among_buttons, labyrinth_buttons, bogo_buttons,
-                     tickets_bans_11_buttons, choose_json_button_11, tickets_bans_10_buttons,
-                     choose_json_button_10, tickets_bans_9_buttons, choose_json_button_9,
-                     tickets_bans_3_buttons, choose_json_button_3, tickets_criteria_buttons,
-                     choose_json_button_tickets_criteria, no_hint_bans_buttons,
-                     choose_json_button_no_hint, no_hint_balance_buttons,
-                     choose_json_button_no_hint_balance, bcp_previous_buttons,
-                     choose_json_button_bcp_previous, bcp_actual_buttons, choose_json_button_bcp_actual,
-                     cgp_6_buttons, choose_json_button_cgp_6, cgp_9_buttons, choose_json_button_cgp_9,
-                     other_bans_wo_field_buttons, choose_json_button_other_wo_field,
-                     other_bans_with_field_buttons, choose_json_button_with_field, new_shiny_buttons,
-                     new_among_buttons, my_tags_buttons, comeback_buttons, manual_tags_buttons,
-                     oto_2_buttons, choose_json_button_oto_2, json_compare_buttons_1,
-                     json_compare_buttons_2, choose_json_compare_button, among_balance_new_tc_buttons,
-                     choose_json_button_among_balance_new_ts, among_balance_average_buttons,
-                     choose_json_button_among_balance_average, labyrinth_balance_ww_buttons,
-                     choose_json_button_labyrinth_balance_ww, labyrinth_balance_cn_buttons,
-                     choose_json_button_labyrinth_balance_cn, tickets_balance_checker_buttons_11,
-                     choose_json_button_tickets_balance_checker_11, tickets_balance_checker_buttons_10,
-                     choose_json_button_tickets_balance_checker_10, tickets_balance_checker_buttons_9,
-                     choose_json_button_tickets_balance_checker_9, tickets_balance_checker_buttons_3,
-                     choose_json_button_tickets_balance_checker_3)
+                                    update_tags_9_buttons, update_tags_3_buttons, no_hint_buttons,
+                                    collection_gacha_tags_buttons, weapon_lto_buttons, shiny_buttons, theo_buttons,
+                                    lto_oto_gc_buttons, among_buttons, labyrinth_buttons, bogo_buttons,
+                                    tickets_bans_11_buttons, choose_json_button_11, tickets_bans_10_buttons,
+                                    choose_json_button_10, tickets_bans_9_buttons, choose_json_button_9,
+                                    tickets_bans_3_buttons, choose_json_button_3, tickets_criteria_buttons,
+                                    choose_json_button_tickets_criteria, no_hint_bans_buttons,
+                                    choose_json_button_no_hint, no_hint_balance_buttons,
+                                    choose_json_button_no_hint_balance, bcp_previous_buttons,
+                                    choose_json_button_bcp_previous, bcp_actual_buttons, choose_json_button_bcp_actual,
+                                    cgp_6_buttons, choose_json_button_cgp_6, cgp_9_buttons, choose_json_button_cgp_9,
+                                    other_bans_wo_field_buttons, choose_json_button_other_wo_field,
+                                    other_bans_with_field_buttons, choose_json_button_with_field, new_shiny_buttons,
+                                    new_among_buttons, my_tags_buttons, comeback_buttons, manual_tags_buttons,
+                                    oto_2_buttons, choose_json_button_oto_2, json_compare_buttons_1,
+                                    json_compare_buttons_2, choose_json_compare_button, among_balance_new_tc_buttons,
+                                    choose_json_button_among_balance_new_ts, among_balance_average_buttons,
+                                    choose_json_button_among_balance_average, labyrinth_balance_ww_buttons,
+                                    choose_json_button_labyrinth_balance_ww, labyrinth_balance_cn_buttons,
+                                    choose_json_button_labyrinth_balance_cn, tickets_balance_checker_buttons_11,
+                                    choose_json_button_tickets_balance_checker_11, tickets_balance_checker_buttons_10,
+                                    choose_json_button_tickets_balance_checker_10, tickets_balance_checker_buttons_9,
+                                    choose_json_button_tickets_balance_checker_9, tickets_balance_checker_buttons_3,
+                                    choose_json_button_tickets_balance_checker_3,
+                                    tickets_balance_checker_buttons_10_extra,
+                                    choose_json_button_tickets_balance_checker_10_extra,
+                                    update_tags_7_buttons, tickets_bans_7_buttons, tickets_balance_checker_buttons_7,
+                                    choose_json_button_7, choose_json_button_tickets_balance_checker_7,
+                                    update_tags_10_buttons_raskat)
 
 
 def boss_page(page: ft.Page):
@@ -113,6 +118,45 @@ def boss_page(page: ft.Page):
         )
     )
 
+    # Подвкладка UPDATE TAGS 10 RASKAT
+    update_tags_10_content_raskat = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_1"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_2"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_3"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_4"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_5"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_6"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_7"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_8"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_9"]
+                ),
+                Container(
+                    content=update_tags_10_buttons_raskat["update_tags_10_10"]
+                )
+            ]
+        )
+    )
+
     # Подвкладка UPDATE TAGS 9
     update_tags_9_content = Container(
         content=Column(
@@ -144,6 +188,36 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=update_tags_9_buttons["update_tags_9_9"]
+                )
+            ]
+        )
+    )
+
+    # Подвкладка UPDATE TAGS 7
+    update_tags_7_content = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_1"]
+                ),
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_2"]
+                ),
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_3"]
+                ),
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_4"]
+                ),
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_5"]
+                ),
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_6"]
+                ),
+                Container(
+                    content=update_tags_7_buttons["update_tags_7_7"]
                 )
             ]
         )
@@ -411,6 +485,71 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_18"]])
+                )
+            ]
+        )
+    )
+
+    # Подвкладка TICKETS BANS 7
+    tickets_bans_7_content = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=tickets_bans_7_buttons["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_7, tickets_bans_7_buttons["selected_files"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["upload_json_button"],
+                                             tickets_bans_7_buttons["check_all_bans_button"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_1"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_2"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_3"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_4"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_5"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_6"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_7"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_8"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_9"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_10"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_11"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_12"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_13"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_14"]])
                 )
             ]
         )
@@ -735,105 +874,59 @@ def boss_page(page: ft.Page):
                                              tickets_balance_checker_buttons_11["selected_files"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_balance_checker_buttons_11['pattern'],
-                                             tickets_balance_checker_buttons_11["upload_json_button"],
-                                             tickets_balance_checker_buttons_11['items_id_lto'],
-                                             tickets_balance_checker_buttons_11['items_id_oto'],
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_11["upload_json_button"],
+                                             tickets_balance_checker_buttons_11["day"],
                                              tickets_balance_checker_buttons_11["check_all"]])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_1"],
-                                             tickets_balance_checker_buttons_11['field_lto_1'],
-                                             tickets_balance_checker_buttons_11['button_12'],
-                                             tickets_balance_checker_buttons_11['field_oto_12'],
-                                             tickets_balance_checker_buttons_11['bundle_1'],
-                                             tickets_balance_checker_buttons_11['bundle_12']])
+                                             tickets_balance_checker_buttons_11['button_12']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_2"],
-                                             tickets_balance_checker_buttons_11['field_lto_2'],
-                                             tickets_balance_checker_buttons_11['button_13'],
-                                             tickets_balance_checker_buttons_11['field_oto_13'],
-                                             tickets_balance_checker_buttons_11['bundle_2'],
-                                             tickets_balance_checker_buttons_11['bundle_13']])
+                                             tickets_balance_checker_buttons_11['button_13']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_3"],
-                                             tickets_balance_checker_buttons_11['field_lto_3'],
-                                             tickets_balance_checker_buttons_11['button_14'],
-                                             tickets_balance_checker_buttons_11['field_oto_14'],
-                                             tickets_balance_checker_buttons_11['bundle_3'],
-                                             tickets_balance_checker_buttons_11['bundle_14']])
+                                             tickets_balance_checker_buttons_11['button_14']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_4"],
-                                             tickets_balance_checker_buttons_11['field_lto_4'],
-                                             tickets_balance_checker_buttons_11['button_15'],
-                                             tickets_balance_checker_buttons_11['field_oto_15'],
-                                             tickets_balance_checker_buttons_11['bundle_4'],
-                                             tickets_balance_checker_buttons_11['bundle_15']])
+                                             tickets_balance_checker_buttons_11['button_15']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_5"],
-                                             tickets_balance_checker_buttons_11['field_lto_5'],
-                                             tickets_balance_checker_buttons_11['button_16'],
-                                             tickets_balance_checker_buttons_11['field_oto_16'],
-                                             tickets_balance_checker_buttons_11['bundle_5'],
-                                             tickets_balance_checker_buttons_11['bundle_16']])
+                                             tickets_balance_checker_buttons_11['button_16']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_6"],
-                                             tickets_balance_checker_buttons_11['field_lto_6'],
-                                             tickets_balance_checker_buttons_11['button_17'],
-                                             tickets_balance_checker_buttons_11['field_oto_17'],
-                                             tickets_balance_checker_buttons_11['bundle_6'],
-                                             tickets_balance_checker_buttons_11['bundle_17']])
+                                             tickets_balance_checker_buttons_11['button_17']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_7"],
-                                             tickets_balance_checker_buttons_11['field_lto_7'],
-                                             tickets_balance_checker_buttons_11['button_18'],
-                                             tickets_balance_checker_buttons_11['field_oto_18'],
-                                             tickets_balance_checker_buttons_11['bundle_7'],
-                                             tickets_balance_checker_buttons_11['bundle_18']])
+                                             tickets_balance_checker_buttons_11['button_18']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_8"],
-                                             tickets_balance_checker_buttons_11['field_lto_8'],
-                                             tickets_balance_checker_buttons_11['button_19'],
-                                             tickets_balance_checker_buttons_11['field_oto_19'],
-                                             tickets_balance_checker_buttons_11['bundle_8'],
-                                             tickets_balance_checker_buttons_11['bundle_19']])
+                                             tickets_balance_checker_buttons_11['button_19']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_9"],
-                                             tickets_balance_checker_buttons_11['field_lto_9'],
-                                             tickets_balance_checker_buttons_11['button_20'],
-                                             tickets_balance_checker_buttons_11['field_oto_20'],
-                                             tickets_balance_checker_buttons_11['bundle_9'],
-                                             tickets_balance_checker_buttons_11['bundle_20']])
+                                             tickets_balance_checker_buttons_11['button_20']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_10"],
-                                             tickets_balance_checker_buttons_11['field_lto_10'],
-                                             tickets_balance_checker_buttons_11['button_21'],
-                                             tickets_balance_checker_buttons_11['field_oto_21'],
-                                             tickets_balance_checker_buttons_11['bundle_10'],
-                                             tickets_balance_checker_buttons_11['bundle_21']])
+                                             tickets_balance_checker_buttons_11['button_21']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_11"],
-                                             tickets_balance_checker_buttons_11['field_lto_11'],
-                                             tickets_balance_checker_buttons_11['button_22'],
-                                             tickets_balance_checker_buttons_11['field_oto_22'],
-                                             tickets_balance_checker_buttons_11['bundle_11'],
-                                             tickets_balance_checker_buttons_11['bundle_22']])
+                                             tickets_balance_checker_buttons_11['button_22']])
                 )
             ]
         )
     )
 
-    # Подвкладка TICKETS BALANCE CHECKER 10
+    # Подвкладка TICKETS BALANCE CHECKER 10 19+ LVL
     tickets_balance_checker_content_10 = Container(
         content=Column(
             scroll=True,
@@ -850,91 +943,114 @@ def boss_page(page: ft.Page):
                                              tickets_balance_checker_buttons_10["selected_files"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_balance_checker_buttons_10['pattern'],
-                                             tickets_balance_checker_buttons_10["upload_json_button"],
-                                             tickets_balance_checker_buttons_10['items_id_lto'],
-                                             tickets_balance_checker_buttons_10['items_id_oto'],
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10["upload_json_button"],
+                                             tickets_balance_checker_buttons_10['day'],
                                              tickets_balance_checker_buttons_10["check_all"]])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_1"],
-                                             tickets_balance_checker_buttons_10['field_lto_1'],
-                                             tickets_balance_checker_buttons_10['button_11'],
-                                             tickets_balance_checker_buttons_10['field_oto_11'],
-                                             tickets_balance_checker_buttons_10['bundle_1'],
-                                             tickets_balance_checker_buttons_10['bundle_11']])
+                                             tickets_balance_checker_buttons_10['button_11']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_2"],
-                                             tickets_balance_checker_buttons_10['field_lto_2'],
-                                             tickets_balance_checker_buttons_10['button_12'],
-                                             tickets_balance_checker_buttons_10['field_oto_12'],
-                                             tickets_balance_checker_buttons_10['bundle_2'],
-                                             tickets_balance_checker_buttons_10['bundle_12']])
+                                             tickets_balance_checker_buttons_10['button_12']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_3"],
-                                             tickets_balance_checker_buttons_10['field_lto_3'],
-                                             tickets_balance_checker_buttons_10['button_13'],
-                                             tickets_balance_checker_buttons_10['field_oto_13'],
-                                             tickets_balance_checker_buttons_10['bundle_3'],
-                                             tickets_balance_checker_buttons_10['bundle_13']])
+                                             tickets_balance_checker_buttons_10['button_13']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_4"],
-                                             tickets_balance_checker_buttons_10['field_lto_4'],
-                                             tickets_balance_checker_buttons_10['button_14'],
-                                             tickets_balance_checker_buttons_10['field_oto_14'],
-                                             tickets_balance_checker_buttons_10['bundle_4'],
-                                             tickets_balance_checker_buttons_10['bundle_14']])
+                                             tickets_balance_checker_buttons_10['button_14']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_5"],
-                                             tickets_balance_checker_buttons_10['field_lto_5'],
-                                             tickets_balance_checker_buttons_10['button_15'],
-                                             tickets_balance_checker_buttons_10['field_oto_15'],
-                                             tickets_balance_checker_buttons_10['bundle_5'],
-                                             tickets_balance_checker_buttons_10['bundle_15']])
+                                             tickets_balance_checker_buttons_10['button_15']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_6"],
-                                             tickets_balance_checker_buttons_10['field_lto_6'],
-                                             tickets_balance_checker_buttons_10['button_16'],
-                                             tickets_balance_checker_buttons_10['field_oto_16'],
-                                             tickets_balance_checker_buttons_10['bundle_6'],
-                                             tickets_balance_checker_buttons_10['bundle_16']])
+                                             tickets_balance_checker_buttons_10['button_16']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_7"],
-                                             tickets_balance_checker_buttons_10['field_lto_7'],
-                                             tickets_balance_checker_buttons_10['button_17'],
-                                             tickets_balance_checker_buttons_10['field_oto_17'],
-                                             tickets_balance_checker_buttons_10['bundle_7'],
-                                             tickets_balance_checker_buttons_10['bundle_17']])
+                                             tickets_balance_checker_buttons_10['button_17']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_8"],
-                                             tickets_balance_checker_buttons_10['field_lto_8'],
-                                             tickets_balance_checker_buttons_10['button_18'],
-                                             tickets_balance_checker_buttons_10['field_oto_18'],
-                                             tickets_balance_checker_buttons_10['bundle_8'],
-                                             tickets_balance_checker_buttons_10['bundle_18']])
+                                             tickets_balance_checker_buttons_10['button_18']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_9"],
-                                             tickets_balance_checker_buttons_10['field_lto_9'],
-                                             tickets_balance_checker_buttons_10['button_19'],
-                                             tickets_balance_checker_buttons_10['field_oto_19'],
-                                             tickets_balance_checker_buttons_10['bundle_9'],
-                                             tickets_balance_checker_buttons_10['bundle_19']])
+                                             tickets_balance_checker_buttons_10['button_19']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_10"],
-                                             tickets_balance_checker_buttons_10['field_lto_10'],
-                                             tickets_balance_checker_buttons_10['button_20'],
-                                             tickets_balance_checker_buttons_10['field_oto_20'],
-                                             tickets_balance_checker_buttons_10['bundle_10'],
-                                             tickets_balance_checker_buttons_10['bundle_20']])
+                                             tickets_balance_checker_buttons_10['button_20']])
+                )
+            ]
+        )
+    )
+
+    # Подвкладка TICKETS BALANCE CHECKER 10 7-18 LVL
+    tickets_balance_checker_content_10_extra = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=tickets_balance_checker_buttons_10_extra["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_tickets_balance_checker_10_extra,
+                                             tickets_balance_checker_buttons_10_extra["selected_files"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["upload_json_button"],
+                                             tickets_balance_checker_buttons_10_extra['day'],
+                                             tickets_balance_checker_buttons_10_extra["check_all"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_1"],
+                                             tickets_balance_checker_buttons_10_extra['button_11']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_2"],
+                                             tickets_balance_checker_buttons_10_extra['button_12']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_3"],
+                                             tickets_balance_checker_buttons_10_extra['button_13']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_4"],
+                                             tickets_balance_checker_buttons_10_extra['button_14']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_5"],
+                                             tickets_balance_checker_buttons_10_extra['button_15']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_6"],
+                                             tickets_balance_checker_buttons_10_extra['button_16']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_7"],
+                                             tickets_balance_checker_buttons_10_extra['button_17']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_8"],
+                                             tickets_balance_checker_buttons_10_extra['button_18']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_9"],
+                                             tickets_balance_checker_buttons_10_extra['button_19']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_10"],
+                                             tickets_balance_checker_buttons_10_extra['button_20']])
                 )
             ]
         )
@@ -957,83 +1073,98 @@ def boss_page(page: ft.Page):
                                              tickets_balance_checker_buttons_9["selected_files"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_balance_checker_buttons_9['pattern'],
-                                             tickets_balance_checker_buttons_9["upload_json_button"],
-                                             tickets_balance_checker_buttons_9['items_id_lto'],
-                                             tickets_balance_checker_buttons_9['items_id_oto'],
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_9["upload_json_button"],
+                                             tickets_balance_checker_buttons_9['day'],
                                              tickets_balance_checker_buttons_9["check_all"]])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_1"],
-                                             tickets_balance_checker_buttons_9['field_lto_1'],
-                                             tickets_balance_checker_buttons_9['button_10'],
-                                             tickets_balance_checker_buttons_9['field_oto_10'],
-                                             tickets_balance_checker_buttons_9['bundle_1'],
-                                             tickets_balance_checker_buttons_9['bundle_10']])
+                                             tickets_balance_checker_buttons_9['button_10']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_2"],
-                                             tickets_balance_checker_buttons_9['field_lto_2'],
-                                             tickets_balance_checker_buttons_9['button_11'],
-                                             tickets_balance_checker_buttons_9['field_oto_11'],
-                                             tickets_balance_checker_buttons_9['bundle_2'],
-                                             tickets_balance_checker_buttons_9['bundle_11']])
+                                             tickets_balance_checker_buttons_9['button_11']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_3"],
-                                             tickets_balance_checker_buttons_9['field_lto_3'],
-                                             tickets_balance_checker_buttons_9['button_12'],
-                                             tickets_balance_checker_buttons_9['field_oto_12'],
-                                             tickets_balance_checker_buttons_9['bundle_3'],
-                                             tickets_balance_checker_buttons_9['bundle_12']])
+                                             tickets_balance_checker_buttons_9['button_12']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_4"],
-                                             tickets_balance_checker_buttons_9['field_lto_4'],
-                                             tickets_balance_checker_buttons_9['button_13'],
-                                             tickets_balance_checker_buttons_9['field_oto_13'],
-                                             tickets_balance_checker_buttons_9['bundle_4'],
-                                             tickets_balance_checker_buttons_9['bundle_13']])
+                                             tickets_balance_checker_buttons_9['button_13']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_5"],
-                                             tickets_balance_checker_buttons_9['field_lto_5'],
-                                             tickets_balance_checker_buttons_9['button_14'],
-                                             tickets_balance_checker_buttons_9['field_oto_14'],
-                                             tickets_balance_checker_buttons_9['bundle_5'],
-                                             tickets_balance_checker_buttons_9['bundle_14']])
+                                             tickets_balance_checker_buttons_9['button_14']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_6"],
-                                             tickets_balance_checker_buttons_9['field_lto_6'],
-                                             tickets_balance_checker_buttons_9['button_15'],
-                                             tickets_balance_checker_buttons_9['field_oto_15'],
-                                             tickets_balance_checker_buttons_9['bundle_6'],
-                                             tickets_balance_checker_buttons_9['bundle_15']])
+                                             tickets_balance_checker_buttons_9['button_15']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_7"],
-                                             tickets_balance_checker_buttons_9['field_lto_7'],
-                                             tickets_balance_checker_buttons_9['button_16'],
-                                             tickets_balance_checker_buttons_9['field_oto_16'],
-                                             tickets_balance_checker_buttons_9['bundle_7'],
-                                             tickets_balance_checker_buttons_9['bundle_16']])
+                                             tickets_balance_checker_buttons_9['button_16']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_8"],
-                                             tickets_balance_checker_buttons_9['field_lto_8'],
-                                             tickets_balance_checker_buttons_9['button_17'],
-                                             tickets_balance_checker_buttons_9['field_oto_17'],
-                                             tickets_balance_checker_buttons_9['bundle_8'],
-                                             tickets_balance_checker_buttons_9['bundle_17']])
+                                             tickets_balance_checker_buttons_9['button_17']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_9"],
-                                             tickets_balance_checker_buttons_9['field_lto_9'],
-                                             tickets_balance_checker_buttons_9['button_18'],
-                                             tickets_balance_checker_buttons_9['field_oto_18'],
-                                             tickets_balance_checker_buttons_9['bundle_9'],
-                                             tickets_balance_checker_buttons_9['bundle_18']])
+                                             tickets_balance_checker_buttons_9['button_18']])
+                )
+            ]
+        )
+    )
+
+    # Подвкладка TICKETS BALANCE CHECKER 7
+    tickets_balance_checker_content_7 = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=tickets_balance_checker_buttons_7["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_tickets_balance_checker_7,
+                                             tickets_balance_checker_buttons_7["selected_files"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["upload_json_button"],
+                                             tickets_balance_checker_buttons_7['day'],
+                                             tickets_balance_checker_buttons_7["check_all"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_1"],
+                                             tickets_balance_checker_buttons_7['button_8']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_2"],
+                                             tickets_balance_checker_buttons_7['button_9']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_3"],
+                                             tickets_balance_checker_buttons_7['button_10']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_4"],
+                                             tickets_balance_checker_buttons_7['button_11']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_5"],
+                                             tickets_balance_checker_buttons_7['button_12']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_6"],
+                                             tickets_balance_checker_buttons_7['button_13']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_7"],
+                                             tickets_balance_checker_buttons_7['button_14']])
                 )
             ]
         )
@@ -1056,39 +1187,26 @@ def boss_page(page: ft.Page):
                                              tickets_balance_checker_buttons_3["selected_files"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_balance_checker_buttons_3['pattern'],
-                                             tickets_balance_checker_buttons_3["upload_json_button"],
-                                             tickets_balance_checker_buttons_3['items_id_lto'],
-                                             tickets_balance_checker_buttons_3['items_id_oto'],
+                    content=ft.Row(controls=[tickets_balance_checker_buttons_3["upload_json_button"],
+                                             tickets_balance_checker_buttons_3['day'],
                                              tickets_balance_checker_buttons_3["check_all"]])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_3["button_1"],
-                                             tickets_balance_checker_buttons_3['field_lto_1'],
-                                             tickets_balance_checker_buttons_3['button_4'],
-                                             tickets_balance_checker_buttons_3['field_oto_4'],
-                                             tickets_balance_checker_buttons_3['bundle_1'],
-                                             tickets_balance_checker_buttons_3['bundle_4']])
+                                             tickets_balance_checker_buttons_3['button_4']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_3["button_2"],
-                                             tickets_balance_checker_buttons_3['field_lto_2'],
-                                             tickets_balance_checker_buttons_3['button_5'],
-                                             tickets_balance_checker_buttons_3['field_oto_5'],
-                                             tickets_balance_checker_buttons_3['bundle_2'],
-                                             tickets_balance_checker_buttons_3['bundle_5']])
+                                             tickets_balance_checker_buttons_3['button_5']])
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_3["button_3"],
-                                             tickets_balance_checker_buttons_3['field_lto_3'],
-                                             tickets_balance_checker_buttons_3['button_6'],
-                                             tickets_balance_checker_buttons_3['field_oto_6'],
-                                             tickets_balance_checker_buttons_3['bundle_3'],
-                                             tickets_balance_checker_buttons_3['bundle_6']])
+                                             tickets_balance_checker_buttons_3['button_6']])
                 )
             ]
         )
     )
+
 
     # Вкладка 11
     tab_11 = ft.Tabs(
@@ -1125,14 +1243,24 @@ def boss_page(page: ft.Page):
                 content=update_tags_10_content
             ),
             ft.Tab(
+                text='tags raskat',
+                icon=ft.icons.UPDATE,
+                content=update_tags_10_content_raskat
+            ),
+            ft.Tab(
                 text='bans, denies',
                 icon=ft.icons.COMPARE,
                 content=tickets_bans_10_content
             ),
             ft.Tab(
-                text='balance',
+                text='balance 19+ lvl',
                 icon=ft.icons.CHECK,
                 content=tickets_balance_checker_content_10
+            ),
+            ft.Tab(
+                text='balance 7-18 lvl',
+                icon=ft.icons.CHECK,
+                content=tickets_balance_checker_content_10_extra
             )
         ],
         expand=1
@@ -1186,6 +1314,30 @@ def boss_page(page: ft.Page):
         expand=1
     )
 
+    # Вкладка B
+    tab_b = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text='tags',
+                icon=ft.icons.UPDATE,
+                content=update_tags_7_content
+            ),
+            ft.Tab(
+                text='bans, denies',
+                icon=ft.icons.COMPARE,
+                content=tickets_bans_7_content
+            ),
+            ft.Tab(
+                text='balance',
+                icon=ft.icons.CHECK,
+                content=tickets_balance_checker_content_7
+            )
+        ],
+        expand=1
+    )
+
     # Вкладка PROFILE TAGS
     tab_profile_tags = ft.Tabs(
         selected_index=0,
@@ -1212,7 +1364,7 @@ def boss_page(page: ft.Page):
                 content=tab_3
             ),
             ft.Tab(
-                text="notIn РФ/РБ" + "\n" + "и в ГП РФ criteria",
+                text="notIn something" + "\n" + " + some criteria",
                 icon=ft.icons.ADMIN_PANEL_SETTINGS,
                 content=tickets_criteria_content
             ),
@@ -1225,6 +1377,11 @@ def boss_page(page: ft.Page):
                 text="COMPARE",
                 icon=ft.icons.COMPARE,
                 content=compare_content
+            ),
+            ft.Tab(
+                text='GROUP B',
+                icon=ft.icons.ABC,
+                content=tab_b
             )
         ],
         expand=1
@@ -1515,7 +1672,8 @@ def boss_page(page: ft.Page):
                                              bcp_actual_buttons["selected_files"]]),
                 ),
                 Container(
-                    content=ft.Row(controls=[bcp_actual_buttons["skin_id_field"]])
+                    content=ft.Row(controls=[bcp_actual_buttons["skin_id_field"],
+                                             bcp_actual_buttons["day"]])
                 ),
                 Container(
                     content=ft.Row(controls=[bcp_actual_buttons["upload_json_button"],
@@ -1574,6 +1732,7 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[cgp_9_buttons["upload_json_button"],
+                                             cgp_9_buttons["day"],
                                              cgp_9_buttons["check_all_button"]])
                 ),
                 Container(
@@ -1601,8 +1760,7 @@ def boss_page(page: ft.Page):
                     content=ft.Row(controls=[cgp_9_buttons["button_8"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[cgp_9_buttons["button_9"],
-                                             cgp_9_buttons['dynamic_items']])
+                    content=ft.Row(controls=[cgp_9_buttons["button_9"]])
                 )
             ]
         )
@@ -1630,6 +1788,7 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[cgp_6_buttons["upload_json_button"],
+                                             cgp_6_buttons['day'],
                                              cgp_6_buttons["check_all_button"]])
                 ),
                 Container(
@@ -1648,8 +1807,7 @@ def boss_page(page: ft.Page):
                     content=ft.Row(controls=[cgp_6_buttons["button_5"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[cgp_6_buttons["button_6"],
-                                             cgp_6_buttons['dynamic_items']])
+                    content=ft.Row(controls=[cgp_6_buttons["button_6"]])
                 )
             ]
         )

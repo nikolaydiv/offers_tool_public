@@ -200,6 +200,92 @@ update_tags_10_functions = {
 }
 
 
+# Функции обновления тегов 10 TICKETS RASKAT
+
+def update_tags_10_1_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(0.99, 0.99, 0.99)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_1")
+
+
+def update_tags_10_2_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(2.5, 4, 0.99)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_2")
+
+
+def update_tags_10_3_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(3.5, 5, 0.99)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_3")
+
+
+def update_tags_10_4_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(4.5, 8, 0.99)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_4")
+
+
+def update_tags_10_5_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(4.5, 8, 18)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_5")
+
+
+def update_tags_10_6_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(6, 18, 18)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_6")
+
+
+def update_tags_10_7_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(6, 18, 37)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_7")
+
+
+def update_tags_10_8_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(10, 30, 37)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_8")
+
+
+def update_tags_10_9_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(10, 30, 61)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_9")
+
+
+def update_tags_10_10_function_raskat(e):
+    from buttons import update_tags_10_buttons_raskat
+    tags_updater.update_tags_tickets(20, 50, 121)
+    button_updater = ButtonUpdater(update_tags_10_buttons_raskat)
+    button_updater.update_buttons("update_tags_10_10")
+
+
+update_tags_10_functions_raskat = {
+    "function_1": update_tags_10_1_function_raskat,
+    "function_2": update_tags_10_2_function_raskat,
+    "function_3": update_tags_10_3_function_raskat,
+    "function_4": update_tags_10_4_function_raskat,
+    "function_5": update_tags_10_5_function_raskat,
+    "function_6": update_tags_10_6_function_raskat,
+    "function_7": update_tags_10_7_function_raskat,
+    "function_8": update_tags_10_8_function_raskat,
+    "function_9": update_tags_10_9_function_raskat,
+    "function_10": update_tags_10_10_function_raskat
+}
+
+
 # Функции обновления тегов 9 TICKETS
 
 def update_tags_9_1_function(e):
@@ -275,6 +361,68 @@ update_tags_9_functions = {
     "function_7": update_tags_9_7_function,
     "function_8": update_tags_9_8_function,
     "function_9": update_tags_9_9_function
+}
+
+
+# Функции обновления тегов 7 TICKETS
+
+def update_tags_7_1_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(0.99, 0.99, 0.99)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_1")
+
+
+def update_tags_7_2_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(2.5, 4, 0.99)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_2")
+
+
+def update_tags_7_3_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(3.5, 5, 0.99)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_3")
+
+
+def update_tags_7_4_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(4.5, 8, 17)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_4")
+
+
+def update_tags_7_5_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(6, 18, 37)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_5")
+
+
+def update_tags_7_6_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(10, 30, 61)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_6")
+
+
+def update_tags_7_7_function(e):
+    from buttons import update_tags_7_buttons
+    tags_updater.update_tags_tickets(20, 50, 121)
+    button_updater = ButtonUpdater(update_tags_7_buttons)
+    button_updater.update_buttons("update_tags_7_7")
+
+
+update_tags_7_functions = {
+    "function_1": update_tags_7_1_function,
+    "function_2": update_tags_7_2_function,
+    "function_3": update_tags_7_3_function,
+    "function_4": update_tags_7_4_function,
+    "function_5": update_tags_7_5_function,
+    "function_6": update_tags_7_6_function,
+    "function_7": update_tags_7_7_function
 }
 
 

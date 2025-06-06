@@ -1,0 +1,7 @@
+
+*__pycache__
+**/*temp*
+.vscode/*
+**/.venv/*
+**/venv/*
+.idea
