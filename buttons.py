@@ -1,23 +1,23 @@
 import flet as ft
 from flet import *
 from tags_functions import (get_profile_button_clicked, update_tags_11_functions,
-                                           update_tags_10_functions, update_tags_9_functions, update_tags_3_functions,
-                                           no_hint_functions, collection_gacha_tags_functions, weapon_lto_functions,
-                                           shiny_functions, theo_functions, lto_oto_gc_functions, among_functions,
-                                           labyrinth_functions, bogo_functions, new_shiny_functions,
-                                           new_among_functions, my_tags_functions, comeback_functions, manual_tags,
-                                           update_tags_7_functions, update_tags_10_functions_raskat)
+                            update_tags_10_functions, update_tags_9_functions, update_tags_3_functions,
+                            no_hint_functions, collection_gacha_tags_functions, weapon_lto_functions,
+                            shiny_functions, theo_functions, lto_oto_gc_functions, among_functions,
+                            labyrinth_functions, bogo_functions, new_shiny_functions,
+                            new_among_functions, my_tags_functions, comeback_functions, manual_tags,
+                            update_tags_7_functions, update_tags_10_functions_raskat)
 from json_functions import (bans_11_functions, bans_10_functions, bans_9_functions, bans_3_functions,
-                                           tickets_criteria_functions, no_hint_bans_functions,
-                                           no_hint_balance_functions, bcp_previous_functions, bcp_actual_functions,
-                                           cgp_6_functions, cgp_9_functions, check_all_bans_other_wo_field_functions,
-                                           check_all_bans_other_with_field_functions, check_oto_2_functions,
-                                           compare_functions, among_new_ts_functions, among_average_functions,
-                                           labyrinth_balance_ww_functions, labyrinth_balance_cn_functions,
-                                           tickets_balance_functions_11, tickets_balance_functions_10,
-                                           tickets_balance_functions_9, tickets_balance_functions_3,
-                                           tickets_balance_functions_10_extra, bans_7_functions,
-                                           tickets_balance_functions_7)
+                            tickets_criteria_functions, no_hint_bans_functions,
+                            no_hint_balance_functions, bcp_previous_functions, bcp_actual_functions,
+                            cgp_6_functions, cgp_9_functions, check_all_bans_other_wo_field_functions,
+                            check_all_bans_other_with_field_functions, check_oto_2_functions,
+                            compare_functions, among_new_ts_functions, among_average_functions,
+                            labyrinth_balance_ww_functions, labyrinth_balance_cn_functions,
+                            tickets_balance_functions_11, tickets_balance_functions_10,
+                            tickets_balance_functions_9, tickets_balance_functions_3,
+                            tickets_balance_functions_10_extra, bans_7_functions,
+                            tickets_balance_functions_7, bans_10_functions_raskat)
 
 
 class PageManager:
@@ -369,7 +369,8 @@ tickets_bans_11_buttons = {
         icon=ft.icons.UPLOAD,
         on_click=bans_11_functions["download_json"]
     ),
-    "reset_button_11": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET, on_click=bans_11_functions["reset"])
+    "reset_button_11": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET, on_click=bans_11_functions["reset"]),
+    'errors': ft.Column()
 }
 
 choose_json_button_11 = ft.Row(
@@ -417,7 +418,8 @@ tickets_bans_10_buttons = {
     "ban_10_17": BanButton(),
     "ban_10_18": BanButton(),
     "ban_10_19": BanButton(),
-    "ban_10_20": BanButton()
+    "ban_10_20": BanButton(),
+    'errors': ft.Column()
 }
 
 choose_json_button_10 = ft.Row(
@@ -431,6 +433,55 @@ choose_json_button_10 = ft.Row(
             ),
         ),
         tickets_bans_10_buttons["selected_files_10"]
+    ]
+)
+
+tickets_bans_10_buttons_raskat = {
+    "open_json_button_10": ft.FilePicker(on_result=bans_10_functions_raskat["open_json"]),
+    "selected_files_10": ft.Text(),
+    "upload_json_button_10": ft.ElevatedButton(
+        text="Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=bans_10_functions_raskat["download_json"]
+    ),
+    "reset_button_10": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
+                                         on_click=bans_10_functions_raskat["reset"]),
+    "check_all_bans_button_10": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
+                                                  on_click=bans_10_functions_raskat["check_all"]),
+    "ban_10_raskat_1": BanButton(),
+    "ban_10_raskat_2": BanButton(),
+    "ban_10_raskat_3": BanButton(),
+    "ban_10_raskat_4": BanButton(),
+    "ban_10_raskat_5": BanButton(),
+    "ban_10_raskat_6": BanButton(),
+    "ban_10_raskat_7": BanButton(),
+    "ban_10_raskat_8": BanButton(),
+    "ban_10_raskat_9": BanButton(),
+    "ban_10_raskat_10": BanButton(),
+    "ban_10_raskat_11": BanButton(),
+    "ban_10_raskat_12": BanButton(),
+    "ban_10_raskat_13": BanButton(),
+    "ban_10_raskat_14": BanButton(),
+    "ban_10_raskat_15": BanButton(),
+    "ban_10_raskat_16": BanButton(),
+    "ban_10_raskat_17": BanButton(),
+    "ban_10_raskat_18": BanButton(),
+    "ban_10_raskat_19": BanButton(),
+    "ban_10_raskat_20": BanButton(),
+    'errors': ft.Column()
+}
+
+choose_json_button_10_raskat = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: tickets_bans_10_buttons_raskat["open_json_button_10"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        tickets_bans_10_buttons_raskat["selected_files_10"]
     ]
 )
 
@@ -462,7 +513,8 @@ tickets_bans_9_buttons = {
     "ban_9_17": BanButton(),
     "ban_9_18": BanButton(),
     "check_all_bans_button": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
-                                               on_click=bans_9_functions["check_all"])
+                                               on_click=bans_9_functions["check_all"]),
+    'errors': ft.Column()
 }
 
 choose_json_button_9 = ft.Row(
@@ -503,7 +555,8 @@ tickets_bans_7_buttons = {
     "ban_7_13": BanButton(),
     "ban_7_14": BanButton(),
     "check_all_bans_button": ft.ElevatedButton(text="Check all", icon=ft.icons.ALL_INBOX,
-                                               on_click=bans_7_functions["check_all"])
+                                               on_click=bans_7_functions["check_all"]),
+    'errors': ft.Column()
 }
 
 choose_json_button_7 = ft.Row(
@@ -536,7 +589,8 @@ tickets_bans_3_buttons = {
     "ban_3_3": BanButton(),
     "ban_3_4": BanButton(),
     "ban_3_5": BanButton(),
-    "ban_3_6": BanButton()
+    "ban_3_6": BanButton(),
+    'errors': ft.Column()
 }
 
 choose_json_button_3 = ft.Row(
@@ -1377,7 +1431,8 @@ tickets_balance_checker_buttons_11 = {
         ]
     ),
     "reset_button": ft.ElevatedButton(text="Reset", icon=ft.icons.LOCK_RESET,
-                                      on_click=tickets_balance_functions_11["reset"])
+                                      on_click=tickets_balance_functions_11["reset"]),
+    'errors': ft.Column()
 }
 
 choose_json_button_tickets_balance_checker_11 = ft.Row(
@@ -1442,7 +1497,8 @@ tickets_balance_checker_buttons_10 = {
             ft.dropdown.Option('17'),
             ft.dropdown.Option('18')
         ]
-    )
+    ),
+    'errors': ft.Column()
 }
 
 choose_json_button_tickets_balance_checker_10 = ft.Row(
@@ -1524,7 +1580,8 @@ tickets_balance_checker_buttons_10_extra = {
             ft.dropdown.Option('26'),
             ft.dropdown.Option('27')
         ]
-    )
+    ),
+    'errors': ft.Column()
 }
 
 choose_json_button_tickets_balance_checker_10_extra = ft.Row(
@@ -1582,7 +1639,8 @@ tickets_balance_checker_buttons_9 = {
             ft.dropdown.Option('23'),
             ft.dropdown.Option('24')
         ]
-    )
+    ),
+    'errors': ft.Column()
 }
 
 choose_json_button_tickets_balance_checker_9 = ft.Row(
@@ -1658,7 +1716,8 @@ tickets_balance_checker_buttons_7 = {
             ft.dropdown.Option('26'),
             ft.dropdown.Option('27')
         ]
-    )
+    ),
+    'errors': ft.Column()
 }
 
 choose_json_button_tickets_balance_checker_7 = ft.Row(
@@ -1701,7 +1760,8 @@ tickets_balance_checker_buttons_3 = {
             ft.dropdown.Option('26'),
             ft.dropdown.Option('27')
         ]
-    )
+    ),
+    'errors': ft.Column()
 }
 
 choose_json_button_tickets_balance_checker_3 = ft.Row(

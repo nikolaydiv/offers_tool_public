@@ -11,7 +11,7 @@ def open_json_function_11(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_bans_11_buttons["selected_files_11"])
     page.json_checker = json_checker
-    json_checker.open_json(e, "json_data_11")
+    json_checker.open_json(e, "json_data")
 
 
 def download_json_11(e):
@@ -194,7 +194,7 @@ def check_all_bans_tickets_11(e):
     i = 1
     k = 0
     while i < 23 and k < 22:
-        tickets_bans_11_buttons[f'ban_11_{i}'].text = json_checker.json_data_11['global'][k]['_id']
+        tickets_bans_11_buttons[f'ban_11_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -237,7 +237,7 @@ def open_json_function_10(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_bans_10_buttons["selected_files_10"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_10')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_10(e):
@@ -406,11 +406,10 @@ def check_all_bans_tickets_10(e):
     i = 1
     k = 0
     while i < 21 and k < 20:
-        tickets_bans_10_buttons[f'ban_10_{i}'].text = json_checker.json_data_10['global'][k]['_id']
+        tickets_bans_10_buttons[f'ban_10_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
-
 
 bans_10_functions = {
     "open_json": open_json_function_10,
@@ -440,6 +439,216 @@ bans_10_functions = {
 }
 
 
+# Функции TICKETS BANS 10 RASKAT
+
+def open_json_function_10_raskat(e: ft.FilePickerResultEvent):
+    from buttons import tickets_bans_10_buttons_raskat, PageManager
+    page = PageManager.get_page()
+    json_checker = JsonOpener(tickets_bans_10_buttons_raskat["selected_files_10"])
+    page.json_checker = json_checker
+    json_checker.open_json(e, 'json_data')
+
+
+def download_json_10_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.download_json_tickets("10_raskat")
+
+
+def reset_function_10_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.reset_tickets("10_raskat")
+
+
+def check_bans_10_1_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 0)
+
+
+def check_bans_10_2_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 1)
+
+
+def check_bans_10_3_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 2)
+
+
+def check_bans_10_4_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 3)
+
+
+def check_bans_10_5_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 4)
+
+
+def check_bans_10_6_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 5)
+
+
+def check_bans_10_7_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 6)
+
+
+def check_bans_10_8_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 7)
+
+
+def check_bans_10_9_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 8)
+
+
+def check_bans_10_10_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_lto("10_raskat", 9)
+
+
+def check_bans_10_11_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 10)
+
+
+def check_bans_10_12_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 11)
+
+
+def check_bans_10_13_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 12)
+
+
+def check_bans_10_14_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 13)
+
+
+def check_bans_10_15_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 14)
+
+
+def check_bans_10_16_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 15)
+
+
+def check_bans_10_17_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 16)
+
+
+def check_bans_10_18_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 17)
+
+
+def check_bans_10_19_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 18)
+
+
+def check_bans_10_20_raskat(e):
+    from buttons import PageManager
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    json_checker.check_bans_oto("10_raskat", 19)
+
+
+def check_all_bans_tickets_10_raskat(e):
+    from buttons import PageManager, tickets_bans_10_buttons_raskat
+    page = PageManager.get_page()
+    json_checker = getattr(page, 'json_checker', None)
+    for i in range(1, 21):
+        function_name = f"check_bans_10_{i}_raskat"
+        func = globals().get(function_name)
+        func(e)
+    time.sleep(3)
+    i = 1
+    k = 0
+    while i < 21 and k < 20:
+        tickets_bans_10_buttons_raskat[f'ban_10_raskat_{i}'].text = json_checker.json_data['global'][k]['_id']
+        i += 1
+        k += 1
+    page.update()
+
+
+bans_10_functions_raskat = {
+    "open_json": open_json_function_10_raskat,
+    "download_json": download_json_10_raskat,
+    "reset": reset_function_10_raskat,
+    "function_1": check_bans_10_1_raskat,
+    "function_2": check_bans_10_2_raskat,
+    "function_3": check_bans_10_3_raskat,
+    "function_4": check_bans_10_4_raskat,
+    "function_5": check_bans_10_5_raskat,
+    "function_6": check_bans_10_6_raskat,
+    "function_7": check_bans_10_7_raskat,
+    "function_8": check_bans_10_8_raskat,
+    "function_9": check_bans_10_9_raskat,
+    "function_10": check_bans_10_10_raskat,
+    "function_11": check_bans_10_11_raskat,
+    "function_12": check_bans_10_12_raskat,
+    "function_13": check_bans_10_13_raskat,
+    "function_14": check_bans_10_14_raskat,
+    "function_15": check_bans_10_15_raskat,
+    "function_16": check_bans_10_16_raskat,
+    "function_17": check_bans_10_17_raskat,
+    "function_18": check_bans_10_18_raskat,
+    "function_19": check_bans_10_19_raskat,
+    "function_20": check_bans_10_20_raskat,
+    "check_all": check_all_bans_tickets_10_raskat
+}
+
+
 # Функции TICKETS BANS 9
 
 def open_json_function_9(e: ft.FilePickerResultEvent):
@@ -447,7 +656,7 @@ def open_json_function_9(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_bans_9_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_9')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_9(e):
@@ -602,7 +811,7 @@ def check_all_bans_tickets_9(e):
     i = 1
     k = 0
     while i < 19 and k < 18:
-        tickets_bans_9_buttons[f'ban_9_{i}'].text = json_checker.json_data_9['global'][k]['_id']
+        tickets_bans_9_buttons[f'ban_9_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -641,7 +850,7 @@ def open_json_function_7(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_bans_7_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_7')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_7(e):
@@ -768,7 +977,7 @@ def check_all_bans_tickets_7(e):
     i = 1
     k = 0
     while i < 15 and k < 14:
-        tickets_bans_7_buttons[f'ban_7_{i}'].text = json_checker.json_data_7['global'][k]['_id']
+        tickets_bans_7_buttons[f'ban_7_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -803,7 +1012,7 @@ def open_json_function_3(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_bans_3_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_3')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_3(e):
@@ -874,7 +1083,7 @@ def check_all_bans_tickets_3(e):
     i = 1
     k = 0
     while i < 7 and k < 6:
-        tickets_bans_3_buttons[f'ban_3_{i}'].text = json_checker.json_data_3['global'][k]['_id']
+        tickets_bans_3_buttons[f'ban_3_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -901,7 +1110,7 @@ def open_json_function_tickets_criteria(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_criteria_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_criteria')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_criteria(e):
@@ -940,7 +1149,7 @@ def open_json_function_no_hint(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(no_hint_bans_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_no_hint_bans')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_no_hint(e):
@@ -1081,7 +1290,7 @@ def check_all_bans_no_hint(e):
     i = 1
     k = 0
     while i < 17 and k < 16:
-        no_hint_bans_buttons[f'button_{i}'].text = json_checker.json_data_no_hint_bans['global'][k]['_id']
+        no_hint_bans_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -1118,7 +1327,7 @@ def open_json_function_no_hint_balance(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(no_hint_balance_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_no_hint_balance')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_no_hint_balance(e):
@@ -1159,11 +1368,10 @@ def check_all_balance(e):
     i = 1
     k = 0
     while i < 17 and k < 16:
-        no_hint_balance_buttons[f'button_{i}'].text = json_checker.json_data_no_hint_balance['global'][k]['_id']
+        no_hint_balance_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
-    print("Буттэ")
 
 
 def check_no_hint_balance_1_1(e):
@@ -1309,7 +1517,7 @@ def open_json_function_bcp_previous(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(bcp_previous_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_bcp_previous')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_bcp_previous(e):
@@ -1401,7 +1609,7 @@ def check_all_bcp_previous(e):
     i = 1
     k = 0
     while i < 10 and k < 9:
-        bcp_previous_buttons[f'button_{i}'].text = json_checker.json_data_bcp_previous['global'][k]['_id']
+        bcp_previous_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -1431,7 +1639,7 @@ def open_json_function_bcp_actual(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(bcp_actual_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_bcp_actual')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_bcp_actual(e):
@@ -1523,7 +1731,7 @@ def check_all_bcp_actual(e):
     i = 1
     k = 0
     while i < 10 and k < 9:
-        bcp_actual_buttons[f'button_{i}'].text = json_checker.json_data_bcp_actual['global'][k]['_id']
+        bcp_actual_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -1553,7 +1761,7 @@ def open_json_function_cgp_6(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(cgp_6_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_cgp_6')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_cgp_6(e):
@@ -1624,7 +1832,7 @@ def check_all_cgp_6(e):
     i = 1
     k = 0
     while i < 7 and k < 6:
-        cgp_6_buttons[f'button_{i}'].text = json_checker.json_data_cgp_6['global'][k]['_id']
+        cgp_6_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -1651,7 +1859,7 @@ def open_json_function_cgp_9(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(cgp_9_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_cgp_9')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_cgp_9(e):
@@ -1743,7 +1951,7 @@ def check_all_cgp_9(e):
     i = 1
     k = 0
     while i < 10 and k < 9:
-        cgp_9_buttons[f'button_{i}'].text = json_checker.json_data_cgp_9['global'][k]['_id']
+        cgp_9_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -1924,14 +2132,14 @@ def download_json_with_field(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.download_json_other('other_with_field')
+    json_checker.download_json_other('with_field')
 
 
 def reset_function_with_field(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.reset_other("other_with_field")
+    json_checker.reset_other("with_field")
 
 
 def check_bans_with_field_1(e):
@@ -2427,7 +2635,7 @@ def open_json_function_among_new_ts(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(among_balance_new_tc_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_among_new_ts')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_among_new_ts(e):
@@ -2481,7 +2689,7 @@ def check_all_among_new_ts(e):
     k = 0
     while i < 4 and k < 3:
         try:
-            among_balance_new_tc_buttons[f'button_{i}'].text = json_checker.json_data_among_new_ts['global'][k]['_id']
+            among_balance_new_tc_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
             i += 1
             k += 1
         except (IndexError, KeyError):
@@ -2507,7 +2715,7 @@ def open_json_function_among_average(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(among_balance_average_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_among_average')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_among_average(e):
@@ -2561,7 +2769,7 @@ def check_all_among_average(e):
     k = 0
     while i < 4 and k < 3:
         try:
-            among_balance_average_buttons[f'button_{i}'].text = json_checker.json_data_among_average['global'][k]['_id']
+            among_balance_average_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
             i += 1
             k += 1
         except (IndexError, KeyError):
@@ -2587,7 +2795,7 @@ def open_json_function_labyrinth_balance_ww(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(labyrinth_balance_ww_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_labyrinth_balance_ww')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_labyrinth_balance_ww(e):
@@ -2648,7 +2856,7 @@ def check_all_labyrinth_balance_ww(e):
     k = 0
     while i < 5 and k < 4:
         try:
-            labyrinth_balance_ww_buttons[f'button_{i}'].text = json_checker.json_data_labyrinth_balance_ww['global'][k]['_id']
+            labyrinth_balance_ww_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
             i += 1
             k += 1
         except (IndexError, KeyError):
@@ -2675,7 +2883,7 @@ def open_json_function_labyrinth_balance_cn(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(labyrinth_balance_cn_buttons["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_labyrinth_balance_cn')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_labyrinth_balance_cn(e):
@@ -2736,7 +2944,7 @@ def check_all_labyrinth_balance_cn(e):
     k = 0
     while i < 5 and k < 4:
         try:
-            labyrinth_balance_cn_buttons[f'button_{i}'].text = json_checker.json_data_labyrinth_balance_cn['global'][k]['_id']
+            labyrinth_balance_cn_buttons[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
             i += 1
             k += 1
         except (IndexError, KeyError):
@@ -2763,7 +2971,7 @@ def open_json_function_tickets_balance_11(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_balance_checker_buttons_11["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_tickets_balance_11')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_balance_11(e):
@@ -2784,154 +2992,154 @@ def check_tickets_balance_11_1(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 0)
+    json_checker.tickets_balance_checker(11, 0, 0)
 
 
 def check_tickets_balance_11_2(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 1)
+    json_checker.tickets_balance_checker(11, 1, 0)
 
 
 def check_tickets_balance_11_3(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 2)
+    json_checker.tickets_balance_checker(11, 2, 0)
 
 
 def check_tickets_balance_11_4(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 3)
+    json_checker.tickets_balance_checker(11, 3, 0)
 
 
 def check_tickets_balance_11_5(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 4)
+    json_checker.tickets_balance_checker(11, 4, 0)
 
 
 def check_tickets_balance_11_6(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 5)
+    json_checker.tickets_balance_checker(11, 5, 0)
 
 
 def check_tickets_balance_11_7(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 6)
+    json_checker.tickets_balance_checker(11, 6, 0)
 
 
 def check_tickets_balance_11_8(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 7)
+    json_checker.tickets_balance_checker(11, 7, 0)
 
 
 def check_tickets_balance_11_9(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 8)
+    json_checker.tickets_balance_checker(11, 8, 0)
 
 
 def check_tickets_balance_11_10(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 9)
+    json_checker.tickets_balance_checker(11, 9, 0)
 
 
 def check_tickets_balance_11_11(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 10)
+    json_checker.tickets_balance_checker(11, 10, 0)
 
 
 def check_tickets_balance_11_12(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 11)
+    json_checker.tickets_balance_checker(11, 11, 0)
 
 
 def check_tickets_balance_11_13(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 12)
+    json_checker.tickets_balance_checker(11, 12, 0)
 
 
 def check_tickets_balance_11_14(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 13)
+    json_checker.tickets_balance_checker(11, 13, 0)
 
 
 def check_tickets_balance_11_15(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 14)
+    json_checker.tickets_balance_checker(11, 14, 0)
 
 
 def check_tickets_balance_11_16(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 15)
+    json_checker.tickets_balance_checker(11, 15, 0)
 
 
 def check_tickets_balance_11_17(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 16)
+    json_checker.tickets_balance_checker(11, 16, 0)
 
 
 def check_tickets_balance_11_18(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 17)
+    json_checker.tickets_balance_checker(11, 17, 0)
 
 
 def check_tickets_balance_11_19(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 18)
+    json_checker.tickets_balance_checker(11, 18, 0)
 
 
 def check_tickets_balance_11_20(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 19)
+    json_checker.tickets_balance_checker(11, 19, 0)
 
 
 def check_tickets_balance_11_21(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 20)
+    json_checker.tickets_balance_checker(11, 20, 0)
 
 
 def check_tickets_balance_11_22(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(22, 21)
+    json_checker.tickets_balance_checker(11, 21, 0)
 
 
 def check_all_tickets_balance_11(e):
@@ -2946,8 +3154,7 @@ def check_all_tickets_balance_11(e):
     i = 1
     k = 0
     while i < 23 and k < 22:
-        tickets_balance_checker_buttons_11[f'button_{i}'].text = json_checker.json_data_tickets_balance_11['global'][k]['_id']
-        tickets_balance_checker_buttons_11[f'bundle_{i}'].text = json_checker.json_data_tickets_balance_11['global'][k]['event']['product_id']
+        tickets_balance_checker_buttons_11[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -2990,7 +3197,7 @@ def open_json_function_tickets_balance_10(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_balance_checker_buttons_10["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_tickets_balance_10')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_balance_10(e):
@@ -3011,140 +3218,140 @@ def check_tickets_balance_10_1(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 0)
+    json_checker.tickets_balance_checker(10, 0, 8)
 
 
 def check_tickets_balance_10_2(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 1)
+    json_checker.tickets_balance_checker(10, 1, 8)
 
 
 def check_tickets_balance_10_3(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 2)
+    json_checker.tickets_balance_checker(10, 2, 8)
 
 
 def check_tickets_balance_10_4(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 3)
+    json_checker.tickets_balance_checker(10, 3, 8)
 
 
 def check_tickets_balance_10_5(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 4)
+    json_checker.tickets_balance_checker(10, 4, 8)
 
 
 def check_tickets_balance_10_6(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 5)
+    json_checker.tickets_balance_checker(10, 5, 8)
 
 
 def check_tickets_balance_10_7(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 6)
+    json_checker.tickets_balance_checker(10, 6, 8)
 
 
 def check_tickets_balance_10_8(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 7)
+    json_checker.tickets_balance_checker(10, 7, 8)
 
 
 def check_tickets_balance_10_9(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 8)
+    json_checker.tickets_balance_checker(10, 8, 8)
 
 
 def check_tickets_balance_10_10(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 9)
+    json_checker.tickets_balance_checker(10, 9, 8)
 
 
 def check_tickets_balance_10_11(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 10)
+    json_checker.tickets_balance_checker(10, 10, 8)
 
 
 def check_tickets_balance_10_12(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 11)
+    json_checker.tickets_balance_checker(10, 11, 8)
 
 
 def check_tickets_balance_10_13(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 12)
+    json_checker.tickets_balance_checker(10, 12, 8)
 
 
 def check_tickets_balance_10_14(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 13)
+    json_checker.tickets_balance_checker(10, 13, 8)
 
 
 def check_tickets_balance_10_15(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 14)
+    json_checker.tickets_balance_checker(10, 14, 8)
 
 
 def check_tickets_balance_10_16(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 15)
+    json_checker.tickets_balance_checker(10, 15, 8)
 
 
 def check_tickets_balance_10_17(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 16)
+    json_checker.tickets_balance_checker(10, 16, 8)
 
 
 def check_tickets_balance_10_18(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 17)
+    json_checker.tickets_balance_checker(10, 17, 8)
 
 
 def check_tickets_balance_10_19(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 18)
+    json_checker.tickets_balance_checker(10, 18, 8)
 
 
 def check_tickets_balance_10_20(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(20, 19)
+    json_checker.tickets_balance_checker(10, 19, 8)
 
 
 def check_all_tickets_balance_10(e):
@@ -3159,8 +3366,7 @@ def check_all_tickets_balance_10(e):
     i = 1
     k = 0
     while i < 21 and k < 20:
-        tickets_balance_checker_buttons_10[f'button_{i}'].text = json_checker.json_data_tickets_balance_10['global'][k]['_id']
-        tickets_balance_checker_buttons_10[f'bundle_{i}'].text = json_checker.json_data_tickets_balance_10['global'][k]['event']['product_id']
+        tickets_balance_checker_buttons_10[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -3201,7 +3407,7 @@ def open_json_function_tickets_balance_10_extra(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_balance_checker_buttons_10_extra["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_tickets_balance_10_extra')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_balance_10_extra(e):
@@ -3222,140 +3428,140 @@ def check_tickets_balance_10_extra_1(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 0)
+    json_checker.tickets_balance_checker("10_extra", 0, 0)
 
 
 def check_tickets_balance_10_extra_2(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 1)
+    json_checker.tickets_balance_checker("10_extra", 1, 0)
 
 
 def check_tickets_balance_10_extra_3(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 2)
+    json_checker.tickets_balance_checker("10_extra", 2, 0)
 
 
 def check_tickets_balance_10_extra_4(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 3)
+    json_checker.tickets_balance_checker("10_extra", 3, 0)
 
 
 def check_tickets_balance_10_extra_5(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 4)
+    json_checker.tickets_balance_checker("10_extra", 4, 0)
 
 
 def check_tickets_balance_10_extra_6(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 5)
+    json_checker.tickets_balance_checker("10_extra", 5, 0)
 
 
 def check_tickets_balance_10_extra_7(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 6)
+    json_checker.tickets_balance_checker("10_extra", 6, 0)
 
 
 def check_tickets_balance_10_extra_8(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 7)
+    json_checker.tickets_balance_checker("10_extra", 7, 0)
 
 
 def check_tickets_balance_10_extra_9(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 8)
+    json_checker.tickets_balance_checker("10_extra", 8, 0)
 
 
 def check_tickets_balance_10_extra_10(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 9)
+    json_checker.tickets_balance_checker("10_extra", 9, 0)
 
 
 def check_tickets_balance_10_extra_11(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 10)
+    json_checker.tickets_balance_checker("10_extra", 10, 0)
 
 
 def check_tickets_balance_10_extra_12(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 11)
+    json_checker.tickets_balance_checker("10_extra", 11, 0)
 
 
 def check_tickets_balance_10_extra_13(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 12)
+    json_checker.tickets_balance_checker("10_extra", 12, 0)
 
 
 def check_tickets_balance_10_extra_14(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 13)
+    json_checker.tickets_balance_checker("10_extra", 13, 0)
 
 
 def check_tickets_balance_10_extra_15(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 14)
+    json_checker.tickets_balance_checker("10_extra", 14, 0)
 
 
 def check_tickets_balance_10_extra_16(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 15)
+    json_checker.tickets_balance_checker("10_extra", 15, 0)
 
 
 def check_tickets_balance_10_extra_17(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 16)
+    json_checker.tickets_balance_checker("10_extra", 16, 0)
 
 
 def check_tickets_balance_10_extra_18(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 17)
+    json_checker.tickets_balance_checker("10_extra", 17, 0)
 
 
 def check_tickets_balance_10_extra_19(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 18)
+    json_checker.tickets_balance_checker("10_extra", 18, 0)
 
 
 def check_tickets_balance_10_extra_20(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker("20_extra", 19)
+    json_checker.tickets_balance_checker("10_extra", 19, 0)
 
 
 def check_all_tickets_balance_10_extra(e):
@@ -3370,7 +3576,7 @@ def check_all_tickets_balance_10_extra(e):
     i = 1
     k = 0
     while i < 21 and k < 20:
-        tickets_balance_checker_buttons_10_extra[f'button_{i}'].text = json_checker.json_data_tickets_balance_10_extra['global'][k]['_id']
+        tickets_balance_checker_buttons_10_extra[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -3411,7 +3617,7 @@ def open_json_function_tickets_balance_9(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_balance_checker_buttons_9["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_tickets_balance_9')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_balance_9(e):
@@ -3432,126 +3638,126 @@ def check_tickets_balance_9_1(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 0)
+    json_checker.tickets_balance_checker(9, 0, 19)
 
 
 def check_tickets_balance_9_2(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 1)
+    json_checker.tickets_balance_checker(9, 1, 19)
 
 
 def check_tickets_balance_9_3(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 2)
+    json_checker.tickets_balance_checker(9, 2, 19)
 
 
 def check_tickets_balance_9_4(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 3)
+    json_checker.tickets_balance_checker(9, 3, 19)
 
 
 def check_tickets_balance_9_5(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 4)
+    json_checker.tickets_balance_checker(9, 4, 19)
 
 
 def check_tickets_balance_9_6(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 5)
+    json_checker.tickets_balance_checker(9, 5, 19)
 
 
 def check_tickets_balance_9_7(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 6)
+    json_checker.tickets_balance_checker(9, 6, 19)
 
 
 def check_tickets_balance_9_8(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 7)
+    json_checker.tickets_balance_checker(9, 7, 19)
 
 
 def check_tickets_balance_9_9(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 8)
+    json_checker.tickets_balance_checker(9, 8, 19)
 
 
 def check_tickets_balance_9_10(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 9)
+    json_checker.tickets_balance_checker(9, 9, 19)
 
 
 def check_tickets_balance_9_11(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 10)
+    json_checker.tickets_balance_checker(9, 10, 19)
 
 
 def check_tickets_balance_9_12(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 11)
+    json_checker.tickets_balance_checker(9, 11, 19)
 
 
 def check_tickets_balance_9_13(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 12)
+    json_checker.tickets_balance_checker(9, 12, 19)
 
 
 def check_tickets_balance_9_14(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 13)
+    json_checker.tickets_balance_checker(9, 13, 19)
 
 
 def check_tickets_balance_9_15(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 14)
+    json_checker.tickets_balance_checker(9, 14, 19)
 
 
 def check_tickets_balance_9_16(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 15)
+    json_checker.tickets_balance_checker(9, 15, 19)
 
 
 def check_tickets_balance_9_17(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 16)
+    json_checker.tickets_balance_checker(9, 16, 19)
 
 
 def check_tickets_balance_9_18(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(18, 17)
+    json_checker.tickets_balance_checker(9, 17, 19)
 
 
 def check_all_tickets_balance_9(e):
@@ -3566,8 +3772,7 @@ def check_all_tickets_balance_9(e):
     i = 1
     k = 0
     while i < 19 and k < 18:
-        tickets_balance_checker_buttons_9[f'button_{i}'].text = json_checker.json_data_tickets_balance_9['global'][k]['_id']
-        tickets_balance_checker_buttons_9[f'bundle_{i}'].text = json_checker.json_data_tickets_balance_9['global'][k]['event']['product_id']
+        tickets_balance_checker_buttons_9[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -3606,7 +3811,7 @@ def open_json_function_tickets_balance_7(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_balance_checker_buttons_7["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_tickets_balance_7')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_balance_7(e):
@@ -3627,98 +3832,98 @@ def check_tickets_balance_7_1(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 0)
+    json_checker.tickets_balance_checker(7, 0, 0)
 
 
 def check_tickets_balance_7_2(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 1)
+    json_checker.tickets_balance_checker(7, 1, 0)
 
 
 def check_tickets_balance_7_3(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 2)
+    json_checker.tickets_balance_checker(7, 2, 0)
 
 
 def check_tickets_balance_7_4(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 3)
+    json_checker.tickets_balance_checker(7, 3, 0)
 
 
 def check_tickets_balance_7_5(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 4)
+    json_checker.tickets_balance_checker(7, 4, 0)
 
 
 def check_tickets_balance_7_6(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 5)
+    json_checker.tickets_balance_checker(7, 5, 0)
 
 
 def check_tickets_balance_7_7(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 6)
+    json_checker.tickets_balance_checker(7, 6, 0)
 
 
 def check_tickets_balance_7_8(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 7)
+    json_checker.tickets_balance_checker(7, 7, 0)
 
 
 def check_tickets_balance_7_9(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 8)
+    json_checker.tickets_balance_checker(7, 8, 0)
 
 
 def check_tickets_balance_7_10(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 9)
+    json_checker.tickets_balance_checker(7, 9, 0)
 
 
 def check_tickets_balance_7_11(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 10)
+    json_checker.tickets_balance_checker(7, 10, 0)
 
 
 def check_tickets_balance_7_12(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 11)
+    json_checker.tickets_balance_checker(7, 11, 0)
 
 
 def check_tickets_balance_7_13(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 12)
+    json_checker.tickets_balance_checker(7, 12, 0)
 
 
 def check_tickets_balance_7_14(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(14, 13)
+    json_checker.tickets_balance_checker(7, 13, 0)
 
 
 def check_all_tickets_balance_7(e):
@@ -3733,7 +3938,7 @@ def check_all_tickets_balance_7(e):
     i = 1
     k = 0
     while i < 15 and k < 14:
-        tickets_balance_checker_buttons_7[f'button_{i}'].text = json_checker.json_data_tickets_balance_7['global'][k]['_id']
+        tickets_balance_checker_buttons_7[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()
@@ -3768,7 +3973,7 @@ def open_json_function_tickets_balance_3(e: ft.FilePickerResultEvent):
     page = PageManager.get_page()
     json_checker = JsonOpener(tickets_balance_checker_buttons_3["selected_files"])
     page.json_checker = json_checker
-    json_checker.open_json(e, 'json_data_tickets_balance_3')
+    json_checker.open_json(e, 'json_data')
 
 
 def download_json_tickets_balance_3(e):
@@ -3789,42 +3994,42 @@ def check_tickets_balance_3_1(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(6, 0)
+    json_checker.tickets_balance_checker(3, 0, 25)
 
 
 def check_tickets_balance_3_2(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(6, 1)
+    json_checker.tickets_balance_checker(3, 1, 25)
 
 
 def check_tickets_balance_3_3(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(6, 2)
+    json_checker.tickets_balance_checker(3, 2, 25)
 
 
 def check_tickets_balance_3_4(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(6, 3)
+    json_checker.tickets_balance_checker(3, 3, 25)
 
 
 def check_tickets_balance_3_5(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(6, 4)
+    json_checker.tickets_balance_checker(3, 4, 25)
 
 
 def check_tickets_balance_3_6(e):
     from buttons import PageManager
     page = PageManager.get_page()
     json_checker = getattr(page, 'json_checker', None)
-    json_checker.tickets_balance_checker(6, 5)
+    json_checker.tickets_balance_checker(3, 5, 25)
 
 
 def check_all_tickets_balance_3(e):
@@ -3839,8 +4044,7 @@ def check_all_tickets_balance_3(e):
     i = 1
     k = 0
     while i < 7 and k < 6:
-        tickets_balance_checker_buttons_3[f'button_{i}'].text = json_checker.json_data_tickets_balance_3['global'][k]['_id']
-        tickets_balance_checker_buttons_3[f'bundle_{i}'].text = json_checker.json_data_tickets_balance_3['global'][k]['event']['product_id']
+        tickets_balance_checker_buttons_3[f'button_{i}'].text = json_checker.json_data['global'][k]['_id']
         i += 1
         k += 1
     page.update()

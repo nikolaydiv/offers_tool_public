@@ -29,7 +29,8 @@ from buttons import (PageManager, get_profile_buttons, update_tags_11_buttons, u
                                     choose_json_button_tickets_balance_checker_10_extra,
                                     update_tags_7_buttons, tickets_bans_7_buttons, tickets_balance_checker_buttons_7,
                                     choose_json_button_7, choose_json_button_tickets_balance_checker_7,
-                                    update_tags_10_buttons_raskat)
+                                    update_tags_10_buttons_raskat, tickets_bans_10_buttons_raskat,
+                                    choose_json_button_10_raskat)
 
 
 def boss_page(page: ft.Page):
@@ -261,71 +262,50 @@ def boss_page(page: ft.Page):
                                              tickets_bans_11_buttons["check_all_bans_button_11"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_1"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_1"],
+                                             tickets_bans_11_buttons['ban_11_12']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_2"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_2"],
+                                             tickets_bans_11_buttons['ban_11_13']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_3"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_3"],
+                                             tickets_bans_11_buttons['ban_11_14']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_4"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_4"],
+                                             tickets_bans_11_buttons['ban_11_15']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_5"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_5"],
+                                             tickets_bans_11_buttons['ban_11_16']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_6"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_6"],
+                                             tickets_bans_11_buttons['ban_11_17']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_7"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_7"],
+                                             tickets_bans_11_buttons['ban_11_18']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_8"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_8"],
+                                             tickets_bans_11_buttons['ban_11_19']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_9"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_9"],
+                                             tickets_bans_11_buttons['ban_11_20']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_10"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_10"],
+                                             tickets_bans_11_buttons['ban_11_21']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_11"]])
+                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_11"],
+                                             tickets_bans_11_buttons['ban_11_22']])
                 ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_12"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_13"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_14"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_15"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_16"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_17"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_18"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_19"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_20"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_21"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_11_buttons["ban_11_22"]])
-                )
+                tickets_bans_11_buttons['errors']
             ]
         )
     )
@@ -350,65 +330,110 @@ def boss_page(page: ft.Page):
                                              tickets_bans_10_buttons["check_all_bans_button_10"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_1"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_1"],
+                                             tickets_bans_10_buttons['ban_10_11']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_2"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_2"],
+                                             tickets_bans_10_buttons['ban_10_12']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_3"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_3"],
+                                             tickets_bans_10_buttons['ban_10_13']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_4"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_4"],
+                                             tickets_bans_10_buttons['ban_10_14']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_5"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_5"],
+                                             tickets_bans_10_buttons['ban_10_15']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_6"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_6"],
+                                             tickets_bans_10_buttons['ban_10_16']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_7"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_7"],
+                                             tickets_bans_10_buttons['ban_10_17']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_8"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_8"],
+                                             tickets_bans_10_buttons['ban_10_18']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_9"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_9"],
+                                             tickets_bans_10_buttons['ban_10_19']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_10"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_10"],
+                                             tickets_bans_10_buttons['ban_10_20']])
+                ),
+                tickets_bans_10_buttons['errors']
+            ]
+        )
+    )
+
+    # Подвкладка TICKETS BANS 10 RASKAT
+    tickets_bans_10_content_raskat = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["reset_button_10"]],
+                                   alignment=ft.MainAxisAlignment.END)
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_11"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["open_json_button_10"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_12"]])
+                    content=ft.Row(controls=[choose_json_button_10_raskat, tickets_bans_10_buttons_raskat["selected_files_10"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_13"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["upload_json_button_10"],
+                                             tickets_bans_10_buttons_raskat["check_all_bans_button_10"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_14"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_1"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_11']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_15"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_2"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_12']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_16"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_3"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_13']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_17"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_4"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_14']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_18"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_5"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_15']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_19"]])
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_6"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_16']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_10_buttons["ban_10_20"]])
-                )
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_7"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_17']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_8"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_18']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_9"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_19']])
+                ),
+                Container(
+                    content=ft.Row(controls=[tickets_bans_10_buttons_raskat["ban_10_raskat_10"],
+                                             tickets_bans_10_buttons_raskat['ban_10_raskat_20']])
+                ),
+                tickets_bans_10_buttons_raskat['errors']
             ]
         )
     )
@@ -433,59 +458,42 @@ def boss_page(page: ft.Page):
                                              tickets_bans_9_buttons["check_all_bans_button"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_1"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_1"],
+                                             tickets_bans_9_buttons['ban_9_10']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_2"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_2"],
+                                             tickets_bans_9_buttons['ban_9_11']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_3"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_3"],
+                                             tickets_bans_9_buttons['ban_9_12']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_4"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_4"],
+                                             tickets_bans_9_buttons['ban_9_13']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_5"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_5"],
+                                             tickets_bans_9_buttons['ban_9_14']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_6"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_6"],
+                                             tickets_bans_9_buttons['ban_9_15']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_7"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_7"],
+                                             tickets_bans_9_buttons['ban_9_16']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_8"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_8"],
+                                             tickets_bans_9_buttons['ban_9_17']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_9"]])
+                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_9"],
+                                             tickets_bans_9_buttons['ban_9_18']])
                 ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_10"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_11"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_12"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_13"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_14"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_15"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_16"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_17"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_9_buttons["ban_9_18"]])
-                )
+                tickets_bans_9_buttons['errors']
             ]
         )
     )
@@ -510,47 +518,34 @@ def boss_page(page: ft.Page):
                                              tickets_bans_7_buttons["check_all_bans_button"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_1"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_1"],
+                                             tickets_bans_7_buttons['ban_7_8']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_2"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_2"],
+                                             tickets_bans_7_buttons['ban_7_9']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_3"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_3"],
+                                             tickets_bans_7_buttons['ban_7_10']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_4"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_4"],
+                                             tickets_bans_7_buttons['ban_7_11']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_5"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_5"],
+                                             tickets_bans_7_buttons['ban_7_12']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_6"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_6"],
+                                             tickets_bans_7_buttons['ban_7_13']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_7"]])
+                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_7"],
+                                             tickets_bans_7_buttons['ban_7_14']])
                 ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_8"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_9"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_10"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_11"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_12"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_13"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_7_buttons["ban_7_14"]])
-                )
+                tickets_bans_7_buttons['errors']
             ]
         )
     )
@@ -575,23 +570,18 @@ def boss_page(page: ft.Page):
                                              tickets_bans_3_buttons["check_all_bans_button"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_1"]])
+                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_1"],
+                                             tickets_bans_3_buttons['ban_3_4']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_2"]])
+                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_2"],
+                                             tickets_bans_3_buttons['ban_3_5']])
                 ),
                 Container(
-                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_3"]])
+                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_3"],
+                                             tickets_bans_3_buttons['ban_3_6']])
                 ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_4"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_5"]])
-                ),
-                Container(
-                    content=ft.Row(controls=[tickets_bans_3_buttons["ban_3_6"]])
-                )
+                tickets_bans_3_buttons['errors']
             ]
         )
     )
@@ -921,7 +911,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_11["button_11"],
                                              tickets_balance_checker_buttons_11['button_22']])
-                )
+                ),
+                tickets_balance_checker_buttons_11['errors']
             ]
         )
     )
@@ -986,7 +977,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10["button_10"],
                                              tickets_balance_checker_buttons_10['button_20']])
-                )
+                ),
+                tickets_balance_checker_buttons_10['errors']
             ]
         )
     )
@@ -1051,7 +1043,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_10_extra["button_10"],
                                              tickets_balance_checker_buttons_10_extra['button_20']])
-                )
+                ),
+                tickets_balance_checker_buttons_10_extra['errors']
             ]
         )
     )
@@ -1112,7 +1105,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_9["button_9"],
                                              tickets_balance_checker_buttons_9['button_18']])
-                )
+                ),
+                tickets_balance_checker_buttons_9['errors']
             ]
         )
     )
@@ -1165,7 +1159,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_7["button_7"],
                                              tickets_balance_checker_buttons_7['button_14']])
-                )
+                ),
+                tickets_balance_checker_buttons_7['errors']
             ]
         )
     )
@@ -1202,7 +1197,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[tickets_balance_checker_buttons_3["button_3"],
                                              tickets_balance_checker_buttons_3['button_6']])
-                )
+                ),
+                tickets_balance_checker_buttons_3['errors']
             ]
         )
     )
@@ -1248,7 +1244,7 @@ def boss_page(page: ft.Page):
                 content=update_tags_10_content_raskat
             ),
             ft.Tab(
-                text='bans, denies',
+                text='bans, denies 19+ lvl',
                 icon=ft.icons.COMPARE,
                 content=tickets_bans_10_content
             ),
@@ -1256,6 +1252,11 @@ def boss_page(page: ft.Page):
                 text='balance 19+ lvl',
                 icon=ft.icons.CHECK,
                 content=tickets_balance_checker_content_10
+            ),
+            ft.Tab(
+                text='bans, denies 7-18 lvl',
+                icon=ft.icons.COMPARE,
+                content=tickets_bans_10_content_raskat
             ),
             ft.Tab(
                 text='balance 7-18 lvl',
@@ -1364,7 +1365,7 @@ def boss_page(page: ft.Page):
                 content=tab_3
             ),
             ft.Tab(
-                text="notIn something" + "\n" + " + some criteria",
+                text="notIn РФ/РБ" + "\n" + "и в GP/iOS РФ, iOS РБ criteria",
                 icon=ft.icons.ADMIN_PANEL_SETTINGS,
                 content=tickets_criteria_content
             ),
