@@ -659,51 +659,51 @@ new_shiny_functions = {
 # Функции обновления тегов THEO
 
 def theo_function_1(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(0.99, 0.99)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_1")
 
 
 def theo_function_2(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(0.99, 30)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_2")
 
 
 def theo_function_3(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(0.99, 80)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_3")
 
 
 def theo_function_4(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(16, 80)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_4")
 
 
 def theo_function_5(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(16, 200)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_5")
 
 
 def theo_function_6(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(20, 200)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_6")
 
 
 def theo_function_7(e):
-    from buttons import theo_buttons
+    from buttons import usual_theo_tags_buttons
     tags_updater.update_tags_theo(20, 600)
-    button_updater = ButtonUpdater(theo_buttons)
+    button_updater = ButtonUpdater(usual_theo_tags_buttons)
     button_updater.update_buttons_other("theo_7")
 
 
@@ -715,6 +715,60 @@ theo_functions = {
     "function_5": theo_function_5,
     "function_6": theo_function_6,
     "function_7": theo_function_7
+}
+
+
+# Функции обновления тегов ADD THEO
+
+def add_theo_function_1(e):
+    from buttons import add_theo_tags_buttons
+    tags_updater.update_tags_theo(0.99, 0.99)
+    button_updater = ButtonUpdater(add_theo_tags_buttons)
+    button_updater.update_buttons_other("theo_1")
+
+
+def add_theo_function_2(e):
+    from buttons import add_theo_tags_buttons
+    tags_updater.update_tags_theo(0.99, 30)
+    button_updater = ButtonUpdater(add_theo_tags_buttons)
+    button_updater.update_buttons_other("theo_2")
+
+
+def add_theo_function_3(e):
+    from buttons import add_theo_tags_buttons
+    tags_updater.update_tags_theo(15, 80)
+    button_updater = ButtonUpdater(add_theo_tags_buttons)
+    button_updater.update_buttons_other("theo_3")
+
+
+def add_theo_function_4(e):
+    from buttons import add_theo_tags_buttons
+    tags_updater.update_tags_theo(17, 80)
+    button_updater = ButtonUpdater(add_theo_tags_buttons)
+    button_updater.update_buttons_other("theo_4")
+
+
+def add_theo_function_5(e):
+    from buttons import add_theo_tags_buttons
+    tags_updater.update_tags_theo(20, 200)
+    button_updater = ButtonUpdater(add_theo_tags_buttons)
+    button_updater.update_buttons_other("theo_5")
+
+
+def add_theo_function_6(e):
+    from buttons import add_theo_tags_buttons
+    tags_updater.update_tags_theo(0.99, 200)
+    button_updater = ButtonUpdater(add_theo_tags_buttons)
+    button_updater.update_buttons_other("theo_6")
+
+
+add_theo_functions = {
+    "function_1": add_theo_function_1,
+    "function_2": add_theo_function_2,
+    "function_3": add_theo_function_3,
+    "function_4": add_theo_function_4,
+    "function_5": add_theo_function_5,
+    "function_6": add_theo_function_6
 }
 
 

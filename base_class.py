@@ -4,6 +4,7 @@ import requests
 import flet as ft
 import re
 import gdown
+import copy
 
 file_id_balance = "1SuldKadbX43vbuQTs_5IsIuqoUHLOLKs"
 url_balance = f"https://drive.google.com/uc?id={file_id_balance}"  # скачивание json-заглушки 1 (проверка баланса 1)
@@ -327,7 +328,6 @@ class ButtonUpdater:
                 button.content.value = self.initial_texts[key]
                 button.update()
 
-
 class JsonOpener:
 
     def __init__(self, button):
@@ -344,6 +344,30 @@ class JsonOpener:
         self.json_data_compare_1 = None
         self.json_data_compare_2 = None
 
+    @staticmethod
+    def add_error(errors, name, expected, actual):
+        if expected != actual:
+            errors.append(f"{name}:\nER: {expected}\nAR: {actual}")
+
+    @staticmethod
+    def add_bans(ltos_list, this_id, bans_should_be):
+        for item in ltos_list:
+            if item != this_id:
+                bans_should_be.append(item)
+            elif item == this_id:
+                pass
+
+    @staticmethod
+    def errors_output(result_text, buttons):
+        for line in result_text:
+            buttons['errors'].controls.append(
+                ft.Column([
+                    ft.Icon(name=ft.icons.ERROR_OUTLINE, color=ft.colors.RED),
+                    ft.Text(line, no_wrap=False)
+                ])
+            )
+        buttons['errors'].update()
+
     def update_button(self, button, is_correct, text):
         self.button = button
 
@@ -354,6 +378,37 @@ class JsonOpener:
             button.text = text
             button.color = ft.colors.RED
         button.update()
+
+    def json_check_end_other(self, errors, buttons, number, result_text, this_id):
+        if not errors:
+            self.update_button(buttons[f'button_{number + 1}'], True, 'УСПЕШНО')
+        else:
+            self.update_button(buttons[f'button_{number + 1}'], False, 'ОШИБКА')
+            result_text.append(f"{this_id}:\n" + "\n".join(errors))
+        self.errors_output(result_text, buttons)
+
+    def json_check_end_tickets(self, errors, buttons, tickets_number, number, result_text, this_id):
+        if not errors:
+            self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'УСПЕШНО')
+        else:
+            self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'ОШИБКА')
+            result_text.append(f"{this_id}:\n" + "\n".join(errors))
+        self.errors_output(result_text, buttons)
+
+    def normalize_conditions(self, data, ignore_keys):
+        if isinstance(data, dict):
+            return {
+                k: self.normalize_conditions(v, ignore_keys)
+                for k, v in data.items()
+                if k not in ignore_keys
+            }
+        elif isinstance(data, list):
+            return [self.normalize_conditions(i, ignore_keys) for i in data]
+        else:
+            return data
+
+    def equal_ignore(self, d1, d2, ignore_keys):
+        return self.normalize_conditions(copy.deepcopy(d1), ignore_keys) == self.normalize_conditions(copy.deepcopy(d2), ignore_keys)
 
     def open_json(self, e: ft.FilePickerResultEvent, target_attr="json_data"):
         if e.files:
@@ -389,8 +444,9 @@ class JsonOpener:
             return json.load(f)
 
     def download_json_tickets(self, tickets_number):
-        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons, tickets_bans_9_buttons,
-                             tickets_bans_3_buttons, tickets_bans_7_buttons, tickets_bans_10_buttons_raskat)
+        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons,
+                                            tickets_bans_9_buttons, tickets_bans_3_buttons, tickets_bans_7_buttons,
+                                            tickets_bans_10_buttons_raskat)
 
         buttons_dict = {
             11: tickets_bans_11_buttons,
@@ -417,14 +473,17 @@ class JsonOpener:
 
     def download_json_other(self, kind):
         from buttons import (tickets_criteria_buttons, no_hint_bans_buttons, no_hint_balance_buttons,
-                             bcp_previous_buttons, bcp_actual_buttons, cgp_6_buttons, cgp_9_buttons,
-                             other_bans_wo_field_buttons, other_bans_with_field_buttons, oto_2_buttons,
-                             json_compare_buttons_1, json_compare_buttons_2,
-                             among_balance_new_tc_buttons, among_balance_average_buttons,
-                             labyrinth_balance_ww_buttons, labyrinth_balance_cn_buttons,
-                             tickets_balance_checker_buttons_11, tickets_balance_checker_buttons_10,
-                             tickets_balance_checker_buttons_9, tickets_balance_checker_buttons_3,
-                             tickets_balance_checker_buttons_10_extra, tickets_balance_checker_buttons_7)
+                                            bcp_previous_buttons, bcp_actual_buttons, cgp_6_buttons, cgp_9_buttons,
+                                            other_bans_wo_field_buttons, other_bans_with_field_buttons, oto_2_buttons_7_18,
+                                            json_compare_buttons_1, json_compare_buttons_2,
+                                            among_balance_new_tc_buttons, among_balance_average_buttons,
+                                            labyrinth_balance_ww_buttons, labyrinth_balance_cn_buttons,
+                                            tickets_balance_checker_buttons_11, tickets_balance_checker_buttons_10,
+                                            tickets_balance_checker_buttons_9, tickets_balance_checker_buttons_3,
+                                            tickets_balance_checker_buttons_10_extra,
+                                            tickets_balance_checker_buttons_7, usual_theo_json_buttons,
+                                            add_theo_json_buttons, oto_2_buttons_19, comeback_json_buttons,
+                                            gf_real_json_buttons)
 
         def update_button(type_, buttons):
             for i, item in enumerate(self.json_data['global'], start=1):
@@ -451,42 +510,57 @@ class JsonOpener:
             'tickets_balance_9': tickets_balance_checker_buttons_9,
             'tickets_balance_3': tickets_balance_checker_buttons_3,
             'tickets_balance_10_extra': tickets_balance_checker_buttons_10_extra,
-            'tickets_balance_7': tickets_balance_checker_buttons_7
+            'tickets_balance_7': tickets_balance_checker_buttons_7,
+            'usual_theo': usual_theo_json_buttons,
+            'add_theo': add_theo_json_buttons,
+            'comeback': comeback_json_buttons,
+            'gf_real': gf_real_json_buttons
         }
 
         json_type = kinds.get(kind)
         if json_type:
             update_button(kind, json_type)
-        else:
-            if kind == 'other_wo_field':
-                self.all_ids_other_wo_field = [item['_id'] for item in self.json_data_other_wo_field['global']]
-                for i, item in enumerate(self.all_ids_other_wo_field, start=1):
-                    button_key = f'button_{i}'
-                    other_bans_wo_field_buttons[button_key].text = item
-                    other_bans_wo_field_buttons[button_key].disabled = False
-                    other_bans_wo_field_buttons[button_key].update()
-            elif kind == 'oto_2':
-                self.all_ids_oto_2 = [item['_id'] for item in self.json_data_oto_2['global']]
-                for i, item in enumerate(self.all_ids_oto_2, start=1):
-                    button_key = f'button_{i}'
-                    oto_2_buttons[button_key].text = item
-                    oto_2_buttons[button_key].disabled = False
-                    oto_2_buttons[button_key].update()
-            elif kind == "compare":
-                for i, item in enumerate(self.json_data_compare_1['global'], start=1):
-                    button_key = f'button_{i}'
-                    json_compare_buttons_1[button_key].text = item['_id']
-                    json_compare_buttons_1[button_key].disabled = False
-                    json_compare_buttons_1[button_key].update()
-                for i, item in enumerate(self.json_data_compare_2['global'], start=1):
-                    button_key = f'button_{i}'
-                    json_compare_buttons_2[button_key].text = item['_id']
-                    json_compare_buttons_2[button_key].disabled = False
-                    json_compare_buttons_2[button_key].update()
+            if kind in ('usual_theo', 'add_theo', 'comeback', 'gf_real'):
+                for item in self.json_data['global']:
+                    self.ltos_list.append(item['_id'])
+            else:
+                if kind == 'other_wo_field':
+                    self.all_ids_other_wo_field = [item['_id'] for item in self.json_data_other_wo_field['global']]
+                    for i, item in enumerate(self.all_ids_other_wo_field, start=1):
+                        button_key = f'button_{i}'
+                        other_bans_wo_field_buttons[button_key].text = item
+                        other_bans_wo_field_buttons[button_key].disabled = False
+                        other_bans_wo_field_buttons[button_key].update()
+                elif kind == 'oto_2_7_18':
+                    self.all_ids_oto_2 = [item['_id'] for item in self.json_data_oto_2['global']]
+                    for i, item in enumerate(self.all_ids_oto_2, start=1):
+                        button_key = f'button_{i}'
+                        oto_2_buttons_7_18[button_key].text = item
+                        oto_2_buttons_7_18[button_key].disabled = False
+                        oto_2_buttons_7_18[button_key].update()
+                elif kind == 'oto_2_19':
+                    self.all_ids_oto_2 = [item['_id'] for item in self.json_data_oto_2['global']]
+                    for i, item in enumerate(self.all_ids_oto_2, start=1):
+                        button_key = f'button_{i}'
+                        oto_2_buttons_19[button_key].text = item
+                        oto_2_buttons_19[button_key].disabled = False
+                        oto_2_buttons_19[button_key].update()
+                elif kind == "compare":
+                    for i, item in enumerate(self.json_data_compare_1['global'], start=1):
+                        button_key = f'button_{i}'
+                        json_compare_buttons_1[button_key].text = item['_id']
+                        json_compare_buttons_1[button_key].disabled = False
+                        json_compare_buttons_1[button_key].update()
+                    for i, item in enumerate(self.json_data_compare_2['global'], start=1):
+                        button_key = f'button_{i}'
+                        json_compare_buttons_2[button_key].text = item['_id']
+                        json_compare_buttons_2[button_key].disabled = False
+                        json_compare_buttons_2[button_key].update()
 
     def reset_tickets(self, tickets_number):
-        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons, tickets_bans_9_buttons,
-                             tickets_bans_3_buttons, tickets_bans_7_buttons, tickets_bans_10_buttons_raskat)
+        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons,
+                                            tickets_bans_9_buttons, tickets_bans_3_buttons, tickets_bans_7_buttons,
+                                            tickets_bans_10_buttons_raskat)
 
         buttons_disct = {
             11: tickets_bans_11_buttons,
@@ -513,14 +587,16 @@ class JsonOpener:
 
     def reset_other(self, kind):
         from buttons import (tickets_criteria_buttons, no_hint_bans_buttons, no_hint_balance_buttons,
-                             bcp_previous_buttons, bcp_actual_buttons, cgp_6_buttons, cgp_9_buttons,
-                             other_bans_wo_field_buttons, other_bans_with_field_buttons, oto_2_buttons,
-                             json_compare_buttons_1, json_compare_buttons_2,
-                             among_balance_new_tc_buttons, among_balance_average_buttons,
-                             labyrinth_balance_ww_buttons, labyrinth_balance_cn_buttons,
-                             tickets_balance_checker_buttons_11, tickets_balance_checker_buttons_10,
-                             tickets_balance_checker_buttons_9, tickets_balance_checker_buttons_3,
-                             tickets_balance_checker_buttons_10_extra, tickets_balance_checker_buttons_7)
+                                            bcp_previous_buttons, bcp_actual_buttons, cgp_6_buttons, cgp_9_buttons,
+                                            other_bans_wo_field_buttons, other_bans_with_field_buttons, oto_2_buttons_7_18,
+                                            json_compare_buttons_1, json_compare_buttons_2,
+                                            among_balance_new_tc_buttons, among_balance_average_buttons,
+                                            labyrinth_balance_ww_buttons, labyrinth_balance_cn_buttons,
+                                            tickets_balance_checker_buttons_11, tickets_balance_checker_buttons_10,
+                                            tickets_balance_checker_buttons_9, tickets_balance_checker_buttons_3,
+                                            tickets_balance_checker_buttons_10_extra, tickets_balance_checker_buttons_7,
+                                            usual_theo_json_buttons, add_theo_json_buttons, oto_2_buttons_19,
+                                            comeback_json_buttons, gf_real_json_buttons)
 
         def reset_data(buttons):
             self.json_data = None
@@ -531,7 +607,9 @@ class JsonOpener:
                     buttons[item].color = ft.colors.PRIMARY
                     buttons[item].disabled = True
                     buttons[item].update()
-                    if kind == 'oto_2':
+                    if kind == 'oto_2_7_18' or kind == 'oto_2_19':
+                        self.json_data_oto_2 = None
+                        self.all_ids_oto_2 = None
                         buttons['input_denies_field'].value = ""
                         buttons['input_denies_field'].update()
                         buttons['input_allows_field'].value = ""
@@ -563,12 +641,19 @@ class JsonOpener:
             'tickets_balance_3': tickets_balance_checker_buttons_3,
             'tickets_balance_10_extra': tickets_balance_checker_buttons_10_extra,
             'tickets_balance_7': tickets_balance_checker_buttons_7,
-            'oto_2': oto_2_buttons
+            'oto_2_7_18': oto_2_buttons_7_18,
+            'oto_2_19': oto_2_buttons_19,
+            'usual_theo': usual_theo_json_buttons,
+            'add_theo': add_theo_json_buttons,
+            'comeback': comeback_json_buttons,
+            'gf_real': gf_real_json_buttons
         }
 
         json_type = kinds.get(kind)
         if json_type:
             reset_data(json_type)
+            if kind in ('usual_theo', 'add_theo', 'comeback', 'gf_real'):
+                self.ltos_list = []
         elif kind == 'compare':
             self.json_data_compare_1 = None
             self.json_data_compare_2 = None
@@ -596,21 +681,19 @@ class JsonOpener:
                     other_bans_wo_field_buttons[item].update()
 
     def check_bans_lto(self, tickets_number, number):
-        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons, tickets_bans_9_buttons,
-                             tickets_bans_3_buttons, tickets_bans_7_buttons, tickets_bans_10_buttons_raskat)
+        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons,
+                                            tickets_bans_9_buttons, tickets_bans_3_buttons, tickets_bans_7_buttons,
+                                            tickets_bans_10_buttons_raskat)
 
         criteria_raskat = bcp_balance['lto_criteria'][0]
         criteria_b = bcp_balance['lto_criteria'][1]
         criteria_daily = bcp_balance['lto_criteria'][2]
-
-        def update_button(button, is_correct):
-            if is_correct is True:
-                button.text = 'Баны и критерий корректны'
-                button.color = ft.colors.GREEN
-            else:
-                button.text = 'Баны или критерий некорректны'
-                button.color = ft.colors.RED
-            button.update()
+        group_b_checks = {
+            'lvl_start': bcp_balance['raskat_b'][0],
+            'lvl_end': bcp_balance['raskat_b'][1],
+            'trigger': bcp_balance['raskat_b'][2],
+            'trigger_param': bcp_balance['raskat_b'][3]
+        }
 
         buttons_disct = {
             11: tickets_bans_11_buttons,
@@ -621,68 +704,47 @@ class JsonOpener:
             '10_raskat': tickets_bans_10_buttons_raskat
         }
         buttons = buttons_disct[tickets_number]
-        result_text = []
+        errors, result_text, bans_should_be = [], [], []
 
         this_id = self.json_data['global'][number]['_id']
-        bans_should_be = []
         bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
-        criteria = self.json_data['global'][number]['criteria']
-        for item in self.ltos_list:
-            if item != this_id:
-                bans_should_be.append(item)
-            elif item == this_id:
-                pass
+        this_criteria = self.json_data['global'][number]['criteria']
+        this_conditions = self.json_data['global'][number]['conditions']
 
+        self.add_bans(self.ltos_list, this_id, bans_should_be)
+
+        if set(bans_should_be) != set(bans_in_json):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
         if tickets_number == '10_raskat':
-            if set(bans_should_be) == set(bans_in_json) and len(bans_should_be) == len(bans_in_json) and criteria == criteria_raskat:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны и критерий корректны')
-            elif set(bans_should_be) == set(bans_in_json) and len(bans_should_be) == len(bans_in_json) and criteria != criteria_raskat:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны корректны, критерий некорректный')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
-            elif criteria == criteria_raskat and set(bans_should_be) != set(bans_in_json):
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False,'Баны некорректны, критерий корректный')
+            if tickets_bans_10_buttons_raskat['group_b'].value is True:
+                self.add_error(errors, "criteria", criteria_b, this_criteria)
+                for name, conditions in group_b_checks.items():
+                    if all(this_conditions.get(k) != v for k, v in conditions.items()):
+                        self.add_error(errors, name, conditions, this_conditions)
             else:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны и критерий некорректны')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+                self.add_error(errors, "criteria", criteria_raskat, this_criteria)
         elif tickets_number == 7:
-            if set(bans_should_be) == set(bans_in_json) and len(bans_should_be) == len(bans_in_json) and criteria == criteria_b:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны и критерий корректны')
-            elif set(bans_should_be) == set(bans_in_json) and len(bans_should_be) == len(bans_in_json) and criteria != criteria_b:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False,'Баны корректны, критерий некорректный')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
-            elif criteria == criteria_b and set(bans_should_be) != set(bans_in_json):
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False,'Баны некорректны, критерий корректный')
-            else:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны и критерий некорректны')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+            self.add_error(errors, "criteria", criteria_b, this_criteria)
         else:
-            if set(bans_should_be) == set(bans_in_json) and len(bans_should_be) == len(bans_in_json) and criteria == criteria_daily:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны и критерий корректны')
-            elif set(bans_should_be) == set(bans_in_json) and len(bans_should_be) == len(bans_in_json) and criteria != criteria_daily:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны корректны, критерий некорректный')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
-            elif criteria == criteria_daily and set(bans_should_be) != set(bans_in_json):
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны некорректны, критерий корректный')
-            else:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны и критерий некорректны')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+            self.add_error(errors, "criteria", criteria_daily, this_criteria)
 
-        for line in result_text:
-            buttons['errors'].controls.append(
-                ft.Column([
-                    ft.Icon(name=ft.icons.ERROR_OUTLINE, color=ft.colors.RED),
-                    ft.Text(line, no_wrap=False)
-                ])
-            )
-        buttons['errors'].update()
+        self.json_check_end_tickets(errors, buttons, tickets_number, number, result_text, this_id)
 
     def check_bans_oto(self, tickets_number, number):
-        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons, tickets_bans_9_buttons,
-                             tickets_bans_3_buttons, tickets_bans_7_buttons, tickets_bans_10_buttons_raskat)
+        from buttons import (tickets_bans_11_buttons, tickets_bans_10_buttons,
+                                            tickets_bans_9_buttons, tickets_bans_3_buttons, tickets_bans_7_buttons,
+                                            tickets_bans_10_buttons_raskat)
 
         criteria_raskat = bcp_balance['lto_criteria'][0]
         criteria_b = bcp_balance['lto_criteria'][1]
         criteria_daily = bcp_balance['lto_criteria'][2]
+        group_b_checks = {
+            'lvl_start': bcp_balance['raskat_b'][0],
+            'lvl_end': bcp_balance['raskat_b'][1],
+            'trigger': bcp_balance['raskat_b'][6],
+            'trigger_param': bcp_balance['raskat_b'][4],
+            "delay": bcp_balance['raskat_b'][5]
+        }
 
         buttons_disct = {
             11: tickets_bans_11_buttons,
@@ -693,7 +755,7 @@ class JsonOpener:
             '10_raskat': tickets_bans_10_buttons_raskat
         }
         buttons = buttons_disct[tickets_number]
-        result_text = []
+        errors, result_text, bans_should_be = [], [], []
 
         def get_denies(json_data, number, paths):
             """Находим denyByOneOf"""
@@ -713,83 +775,47 @@ class JsonOpener:
             ['global', number, 'conditions', 'filter', 'and', 1, 'denyByOneOf'],
             ['global', number, 'conditions', 'filter', 'and', 0, 'denyByOneOf']
         ]
-
         deny_paths_2 = [
             ['global', number, 'conditions', 'filter', 'and', 1, 'or', 1, 'denyByOneOf'],
             ['global', number, 'conditions', 'filter', 'and', 0, 'or', 1, 'denyByOneOf']
         ]
-
         deny_paths_3 = [
             ['global', number, 'conditions', 'filter', 'and', 1, 'denyByOneOf']
         ]
 
         this_id = self.json_data['global'][number]['_id']
-        bans_should_be = []
         bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
         criteria = self.json_data['global'][number]['criteria']
-        for item in self.otos_list:
-            if item != this_id:
-                bans_should_be.append(item)
-            elif item != this_id:
-                pass
+        this_conditions = self.json_data['global'][number]['conditions']
+        self.add_bans(self.otos_list, this_id, bans_should_be)
 
+        if set(bans_in_json) != set(bans_should_be):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
         if tickets_number == 3:
             denies_in_json = get_denies(self.json_data, number, deny_paths_3)
-            if (set(bans_should_be) == set(bans_in_json)
-                    and len(bans_should_be) == len(bans_in_json) and set(denies_in_json) == set(self.ltos_list)
-                    and len(denies_in_json) == len(self.ltos_list) and criteria == criteria_daily):
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны, денаи и критерий корректны')
-            else:
-                self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны, денаи или критерий некорректны')
-                result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+            self.add_error(errors, 'denies', self.ltos_list, denies_in_json)
+            self.add_error(errors, "criteria", criteria_daily, criteria)
         else:
             denies_in_json_1 = get_denies(self.json_data, number, deny_paths_1)
             denies_in_json_2 = get_denies(self.json_data, number, deny_paths_2)
+            if set(denies_in_json_1) != set(self.ltos_list):
+                errors.append(f"denies 1: \nER: {self.ltos_list}\nAR: {denies_in_json_1}")
+            if set(denies_in_json_2) != set(self.ltos_list):
+                errors.append(f"denies 2: \nER: {self.ltos_list}\nAR: {denies_in_json_2}")
             if tickets_number == '10_raskat':
-                if (set(bans_should_be) == set(bans_in_json)
-                        and len(bans_should_be) == len(bans_in_json)
-                        and set(denies_in_json_1) == set(self.ltos_list)
-                        and len(denies_in_json_1) == len(self.ltos_list)
-                        and set(denies_in_json_2) == set(self.ltos_list)
-                        and len(denies_in_json_2) == len(self.ltos_list)
-                        and criteria == criteria_raskat):
-                    self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны, денаи и критерий корректны')
+                if tickets_bans_10_buttons_raskat['group_b'].value is True:
+                    self.add_error(errors, 'criteria', criteria_b, criteria)
+                    for name, conditions in group_b_checks.items():
+                        if all(this_conditions.get(k) != v for k, v in conditions.items()):
+                            self.add_error(errors, name, conditions, this_conditions)
                 else:
-                    self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны, денаи или критерий некорректны')
-                    result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+                    self.add_error(errors, 'criteria', criteria_raskat, criteria)
             elif tickets_number == 7:
-                if (set(bans_should_be) == set(bans_in_json)
-                        and len(bans_should_be) == len(bans_in_json)
-                        and set(denies_in_json_1) == set(self.ltos_list)
-                        and len(denies_in_json_1) == len(self.ltos_list)
-                        and set(denies_in_json_2) == set(self.ltos_list)
-                        and len(denies_in_json_2) == len(self.ltos_list)
-                        and criteria == criteria_b):
-                    self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны, денаи и критерий корректны')
-                else:
-                    self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны, денаи или критерий некорректны')
-                    result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+                self.add_error(errors, 'criteria', criteria_b, criteria)
             else:
-                if (set(bans_should_be) == set(bans_in_json)
-                        and len(bans_should_be) == len(bans_in_json)
-                        and set(denies_in_json_1) == set(self.ltos_list)
-                        and len(denies_in_json_1) == len(self.ltos_list)
-                        and set(denies_in_json_2) == set(self.ltos_list)
-                        and len(denies_in_json_2) == len(self.ltos_list)
-                        and criteria == criteria_daily):
-                    self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], True, 'Баны, денаи и критерий корректны')
-                else:
-                    self.update_button(buttons[f'ban_{tickets_number}_{number + 1}'], False, 'Баны, денаи или критерий некорректны')
-                    result_text.append(f'{this_id}:\n ER: {criteria_daily}\n AR: {criteria}')
+                self.add_error(errors, 'criteria', criteria_daily, criteria)
 
-        for line in result_text:
-            buttons['errors'].controls.append(
-                ft.Column([
-                    ft.Icon(name=ft.icons.ERROR_OUTLINE, color=ft.colors.RED),
-                    ft.Text(line, no_wrap=False)
-                ])
-            )
-        buttons['errors'].update()
+        self.json_check_end_tickets(errors, buttons, tickets_number, number, result_text, this_id)
 
     def check_criteria(self):
         from buttons import tickets_criteria_buttons
@@ -808,89 +834,41 @@ class JsonOpener:
 
     def check_bans_no_hint(self, number):
         from buttons import no_hint_bans_buttons
-        bans_should_be = []
+        errors, result_text, bans_should_be = [], [], []
         bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
         this_product_id = self.json_data['global'][number]['event']['product_id']
         all_ids = self.json_data['global']
+        this_id = self.json_data['global'][number]['_id']
+
         for item in all_ids:
             if this_product_id != item['event']['product_id']:
                 bans_should_be.append(item['_id'])
             elif this_product_id == item['event']['product_id']:
                 pass
-        if set(bans_in_json) == set(bans_should_be) and len(bans_in_json) == len(bans_should_be):
-            self.update_button(no_hint_bans_buttons[f'button_{number + 1}'], True, 'Баны корректны')
-        else:
-            self.update_button(no_hint_bans_buttons[f'button_{number + 1}'], False, 'Баны некорректны')
+
+        if set(bans_should_be) != set(bans_in_json):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
+
+        self.json_check_end_other(errors, no_hint_bans_buttons, number, result_text, this_id)
 
     def check_balance_no_hint(self, number):
         from buttons import no_hint_balance_buttons
-        criteria_new_263 = bcp_balance['no_hint_criteria'][0]
-        filters = [{'filter_1': "secret_data"},
-                   {'filter_2': "secret_data"},
-                   {'filter_3': "secret_data"},
-                   {'filter_4': "secret_data"}]
-        this_level_start = self.json_data['global'][number]['conditions']['level_start']
-        this_only_for_buyer = self.json_data['global'][number]['conditions']['OnlyForBuyer']
-        this_filter = self.json_data['global'][number]['conditions']['filter']
-        this_trigger = self.json_data['global'][number]['conditions']['trigger']
-        this_trigger_param = self.json_data['global'][number]['conditions']['trigger_param']
-        this_skin_id = self.json_data['global'][number]['conditions']['skin_id']
+        criteria = bcp_balance['lto_criteria'][2]
+        conditions = bcp_balance['no_hint_conditions']
+        event = bcp_balance['no_hint_event']
+        errors, result_text = [], []
+        ignore_keys = {"banOffers"}
+        this_id = self.json_data['global'][number]['_id']
+        this_conditions = self.json_data['global'][number]['conditions']
         this_event = self.json_data['global'][number]['event']
         this_criteria = self.json_data['global'][number]['criteria']
-        this_packname = self.json_data['global'][number]['conditions']['packName']
-        this_platform = self.json_data['global'][number]['platform']
-        if number in range(4, 16):
-            this_delay = self.json_data['global'][number]['conditions']['delay']
 
-        conditions = {
-            0: {"filter": filters[0], "event": bcp_balance['no_hint_1'][0], "trigger_param": 400006},
-            1: {"filter": filters[1], "event": bcp_balance['no_hint_1'][1], "trigger_param": 400006},
-            2: {"filter": filters[2], "event": bcp_balance['no_hint_1'][2], "trigger_param": 400006},
-            3: {"filter": filters[3], "event": bcp_balance['no_hint_1'][3], "trigger_param": 400006},
-            4: {"filter": filters[0], "event": bcp_balance['no_hint_2'][0], "trigger_param": 400008, "delay": 30},
-            5: {"filter": filters[1], "event": bcp_balance['no_hint_2'][1], "trigger_param": 400008, "delay": 30},
-            6: {"filter": filters[2], "event": bcp_balance['no_hint_2'][2], "trigger_param": 400008, "delay": 30},
-            7: {"filter": filters[3], "event": bcp_balance['no_hint_2'][3], "trigger_param": 400008, "delay": 30},
-            8: {"filter": filters[0], "event": bcp_balance['no_hint_3'][0], "trigger_param": 400003, "delay": 60},
-            9: {"filter": filters[1], "event": bcp_balance['no_hint_3'][1], "trigger_param": 400003, "delay": 60},
-            10: {"filter": filters[2], "event": bcp_balance['no_hint_3'][2], "trigger_param": 400003, "delay": 60},
-            11: {"filter": filters[3], "event": bcp_balance['no_hint_3'][3], "trigger_param": 400003, "delay": 60},
-            12: {"filter": filters[0], "event": bcp_balance['no_hint_4'][0], "trigger_param": 400009, "delay": 45},
-            13: {"filter": filters[1], "event": bcp_balance['no_hint_4'][1], "trigger_param": 400009, "delay": 45},
-            14: {"filter": filters[2], "event": bcp_balance['no_hint_4'][2], "trigger_param": 400009, "delay": 45},
-            15: {"filter": filters[3], "event": bcp_balance['no_hint_4'][3], "trigger_param": 400009, "delay": 45},
-        }
+        if not self.equal_ignore(conditions[number], this_conditions, ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this_conditions)
+        self.add_error(errors, 'event', event[number], this_event)
+        self.add_error(errors, 'criteria', criteria, this_criteria)
 
-        def update_button(button, is_correct):
-            if is_correct is True:
-                button.text = 'Баланс корректный'
-                button.color = ft.colors.GREEN
-            else:
-                button.text = 'Баланс некорректный'
-                button.color = ft.colors.RED
-            button.update()
-
-        if number in conditions:
-            params = conditions[number]
-
-            is_active = (
-                    this_level_start == 7 and
-                    this_only_for_buyer is True and
-                    this_filter == params['filter'] and
-                    this_trigger == 'no_hint' and
-                    this_trigger_param == params['trigger_param'] and
-                    this_skin_id == 10078 and
-                    this_event == params['event'] and
-                    this_criteria == criteria_new_263 and
-                    this_packname == 'events1' and
-                    this_platform == []
-            )
-
-            if 'delay' in params:
-                is_active = is_active and this_delay == params['delay']
-
-            button_key = f'button_{number + 1}'
-            update_button(no_hint_balance_buttons[button_key], is_active)
+        self.json_check_end_other(errors, no_hint_balance_buttons, number, result_text, this_id)
 
     def check_bcp_previous(self, number):
         from buttons import bcp_previous_buttons
@@ -1018,115 +996,138 @@ class JsonOpener:
 
     def check_bcp_actual(self, number):
         from buttons import bcp_actual_buttons
+        errors, result_text = [], []
+
+        ignore_keys = {"banOffers", "skin_id"}
+
         platform_ios_android_samsung = [
             "ios",
             "android",
             "samsung"
         ]
-        criteria_non_default = bcp_balance['bcp_criteria'][0]
-        criteria_default = bcp_balance['bcp_criteria'][1]
-        criteria = bcp_balance['bcp_criteria'][2]
         platform_win_amazon = [
             "win",
             "amazon"
         ]
+        criteria_non_default = bcp_balance['bcp_criteria'][0]
+        criteria_default = bcp_balance['bcp_criteria'][1]
+        criteria = bcp_balance['bcp_criteria'][2]
         criteria_rb_rf = bcp_balance['bcp_criteria'][3]
+        conditions = bcp_balance['bcp_actual_conditions']
+        this = self.json_data['global'][number]
 
-        this_packname = self.json_data['global'][number]['conditions']['packName']
-        this_level_start = self.json_data['global'][number]['conditions']['level_start']
-        this_only_for_buyer = self.json_data['global'][number]['conditions']['OnlyForBuyer']
-        this_subtype = self.json_data['global'][number]['conditions']['subtype']
-        this_show_in_item_info = self.json_data['global'][number]['conditions']['show_in_item_info']
-        this_platform = self.json_data['global'][number]['platform']
-        this_criteria = self.json_data['global'][number]['criteria']
-        this_event = self.json_data['global'][number]['event']
-        if number == 0 or number == 1 or number == 2 or number == 6:
+        if number in {0, 1, 2, 6}:
             this_skin_id = self.json_data['global'][number]['conditions']['skin_id']
-        if number == 2 or number == 5:
-            this_event_uwp = self.json_data['global'][number]['event']
 
         if int(bcp_actual_buttons['day'].value) in range(0, 24):
             double = "bcp_0-23_fixed"
         else:
             double = "bcp_24-27_double"
 
+        if not self.equal_ignore(conditions[number], this['conditions'], ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this['conditions'])
+        if number in {0, 1, 2, 3, 4, 5}:
+            self.add_error(errors, 'event', bcp_balance[double][number], this['event'])
+        elif number in {6, 7, 8}:
+            self.add_error(errors, 'event', bcp_balance["bcp_dynamic"][int(bcp_actual_buttons['day'].value)][number - 6],this['event'])
+        if number in {0, 1, 2, 6}:
+            self.add_error(errors, 'skin_id', int(bcp_actual_buttons["skin_id_field"].value), this_skin_id)
+        if number in {0, 1, 3, 4}:
+            self.add_error(errors, 'platform', platform_ios_android_samsung, this['platform'])
+        if number in {2, 5}:
+            self.add_error(errors, 'platform', platform_win_amazon, this['platform'])
+        if number in {0, 3}:
+            self.add_error(errors, 'criteria', criteria_non_default, this['criteria'])
+        if number in {1, 4}:
+            self.add_error(errors, 'criteria', criteria_default, this['criteria'])
+        if number in {2, 5}:
+            self.add_error(errors, 'criteria', criteria, this['criteria'])
+        if number in {6, 7, 8}:
+            self.add_error(errors, 'criteria', criteria_rb_rf, this['criteria'])
+
+        self.json_check_end_other(errors, bcp_actual_buttons, number, result_text, this['_id'])
+
+    def check_usual_theo(self, number):
+        from buttons import usual_theo_json_buttons
+        if usual_theo_json_buttons['group_b'].value is True:
+            criteria_all = bcp_balance['lto_criteria'][1]
+            conditions_1 = bcp_balance['usual_theo_conditions_b_1']
+            conditions_2 = bcp_balance['usual_theo_conditions_b_2']
+        else:
+            criteria_all = bcp_balance['lto_criteria'][0]
+            conditions_1 = bcp_balance['usual_theo_conditions_1']
+            conditions_2 = bcp_balance['usual_theo_conditions_2']
+        events_1 = bcp_balance['usual_theo_event_1']
+        events_2 = bcp_balance['usual_theo_event_2']
+        errors, result_text, bans_should_be = [], [], []
+        ignore_keys = {"banOffers", "skin_id", "aura"}
+
+        this_skin_id = self.json_data['global'][number]['conditions']['skin_id']
+        this_event = self.json_data['global'][number]['event']
+        this_criteria = self.json_data['global'][number]['criteria']
+        this_conditions = self.json_data['global'][number]['conditions']
+        this_id = self.json_data['global'][number]['_id']
+        bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
+
+        self.add_bans(self.ltos_list, this_id, bans_should_be)
+
+        if int(usual_theo_json_buttons['launch'].value) == 1:
+            conditions = conditions_1
+            events = events_1
+        else:
+            conditions = conditions_2
+            events = events_2
+
+        if set(bans_should_be) != set(bans_in_json):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
+        if not self.equal_ignore(this_conditions, conditions[number], ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this_conditions)
+        if not self.equal_ignore(this_event, events[number], ignore_keys):
+            self.add_error(errors, 'event', events[number], this_event)
+        self.add_error(errors, 'skin_id', int(usual_theo_json_buttons['skin_id_field'].value), this_skin_id)
+        self.add_error(errors, 'criteria', criteria_all, this_criteria)
+
+        self.json_check_end_other(errors, usual_theo_json_buttons, number, result_text, this_id)
+
+    def check_add_theo(self, number):
+        from buttons import add_theo_json_buttons
+        criteria_all = bcp_balance['lto_criteria'][2]
+        criteria_1 = bcp_balance['bcp_criteria'][0]
+        criteria_2 = bcp_balance['bcp_criteria'][1]
+        conditions = bcp_balance['add_theo_conditions']
+        events = bcp_balance['add_theo_event']
+        input_denies = [int(val) for val in add_theo_json_buttons["input_denies_field"].value.split(",")]
+        errors, result_text, bans_should_be = [], [], []
+        ignore_keys = {"banOffers", "skin_id", "denyByOneOf", "itemIdLT"}
+
+        this_skin_id = self.json_data['global'][number]['conditions']['skin_id']
+        this_event = self.json_data['global'][number]['event']
+        this_criteria = self.json_data['global'][number]['criteria']
+        this_conditions = self.json_data['global'][number]['conditions']
+        this_id = self.json_data['global'][number]['_id']
+        this_item_id = self.json_data['global'][number]['conditions']['filter']['itemIdLT'][0]
+        bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
+        denies_in_json = self.json_data['global'][number]['conditions']['filter']['denyByOneOf']
+
+        self.add_bans(self.ltos_list, this_id, bans_should_be)
+
+        if set(bans_should_be) != set(bans_in_json):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
+        if set(input_denies) != set(denies_in_json):
+            self.add_error(errors, 'denies', input_denies, denies_in_json)
+        if not self.equal_ignore(this_conditions, conditions[number], ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this_conditions)
+        self.add_error(errors, 'event', events[number], this_event)
+        self.add_error(errors, 'itemId', int(add_theo_json_buttons['item_id_field'].value), this_item_id)
+        self.add_error(errors, 'skin_id', int(add_theo_json_buttons['skin_id_field'].value), this_skin_id)
         if number == 0:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is False
-                    and this_skin_id == int(bcp_actual_buttons["skin_id_field"].value) and this_subtype == 1002
-                    and this_show_in_item_info is True and this_platform == platform_ios_android_samsung
-                    and this_criteria == criteria_non_default and
-                    this_event == bcp_balance[double][number]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
+            self.add_error(errors, 'criteria', criteria_1, this_criteria)
         elif number == 1:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is False
-                    and this_skin_id == int(bcp_actual_buttons["skin_id_field"].value) and this_subtype == 1000
-                    and this_show_in_item_info is True and this_platform == platform_ios_android_samsung
-                    and this_criteria == criteria_default and
-                    this_event == bcp_balance[double][number]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 2:
-            event_default = self.json_data['global'][1]['event']
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is False
-                    and this_skin_id == int(bcp_actual_buttons["skin_id_field"].value) and this_subtype == 1000
-                    and this_show_in_item_info is True and this_platform == platform_win_amazon and this_criteria == criteria
-                    and this_event_uwp == event_default and
-                    this_event == bcp_balance[double][number]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 3:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is False
-                    and this_subtype == 1002 and this_show_in_item_info is True
-                    and this_platform == platform_ios_android_samsung and this_criteria == criteria_non_default
-                    and this_event == bcp_balance[double][number]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 4:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is False
-                    and this_subtype == 1000 and this_show_in_item_info is True
-                    and this_platform == platform_ios_android_samsung and this_criteria == criteria_default
-                    and this_event == bcp_balance[double][number]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 5:
-            event_default = self.json_data['global'][4]['event']
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is False
-                    and this_subtype == 1000 and this_show_in_item_info is True
-                    and this_platform == platform_win_amazon and this_criteria == criteria and this_event_uwp == event_default
-                    and this_event == bcp_balance[double][number]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 6:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is True
-                    and this_skin_id == int(bcp_actual_buttons["skin_id_field"].value) and this_subtype == 1000
-                    and this_show_in_item_info is True and this_platform == [] and this_criteria == criteria_rb_rf
-                    and this_event == bcp_balance["bcp_dynamic"][int(bcp_actual_buttons['day'].value)][0]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 7:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is True
-                    and this_subtype == 1000 and this_show_in_item_info is True
-                    and this_platform == [] and this_criteria == criteria_rb_rf
-                    and this_event == bcp_balance["bcp_dynamic"][int(bcp_actual_buttons['day'].value)][1]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
-        elif number == 8:
-            if (this_packname == "events1" and this_level_start == 7 and this_only_for_buyer is True
-                    and this_subtype == 1000 and this_show_in_item_info is True
-                    and this_platform == [] and this_criteria == criteria_rb_rf
-                    and this_event == bcp_balance["bcp_dynamic"][int(bcp_actual_buttons['day'].value)][2]):
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], True, 'Запуск и баланс корректные')
-            else:
-                self.update_button(bcp_actual_buttons[f'button_{number + 1}'], False, 'Запуск или баланс некорректные')
+            self.add_error(errors, 'criteria', criteria_2, this_criteria)
+        else:
+            self.add_error(errors, 'criteria', criteria_all, this_criteria)
+
+        self.json_check_end_other(errors, add_theo_json_buttons, number, result_text, this_id)
 
     def check_cgp_6(self, number):
         from buttons import cgp_6_buttons
@@ -1307,47 +1308,63 @@ class JsonOpener:
             else:
                 self.update_button(other_bans_with_field_buttons[f'button_{number + 1}'], False, 'Баны некорректны')
 
-    def check_oto_2(self, number):
-        from buttons import oto_2_buttons
+    def check_oto_2(self, buttons, level, number):
+        from buttons import oto_2_buttons_7_18, oto_2_buttons_19
         this_id = self.json_data_oto_2['global'][number]['_id']
-        check_bans_should_be = []
-        check_bans_in_json = self.json_data_oto_2['global'][number]['conditions']['banOffers']
+        errors, result_text, bans_should_be = [], [], []
+        bans_in_json = self.json_data_oto_2['global'][number]['conditions']['banOffers']
+        this_conditions = self.json_data_oto_2['global'][number]['conditions']
+        this_event = self.json_data_oto_2['global'][number]['event']
+        this_criteria = self.json_data_oto_2['global'][number]['criteria']
+        ignore_keys = {"banOffers", "allowByOneOf", "denyByOneOf"}
+
+        if level == 7:
+            if oto_2_buttons_7_18['launch'].value == "1":
+                conditions = bcp_balance['oto_2_conditions_7_18_1']
+                event = bcp_balance['oto_2_event_all_1']
+            elif oto_2_buttons_7_18['launch'].value == "2":
+                conditions = bcp_balance['oto_2_conditions_7_18_2']
+                event= bcp_balance['oto_2_event_7_18_2']
+        elif level == 19:
+            if oto_2_buttons_19['launch'].value == "1":
+                conditions = bcp_balance['oto_2_conditions_19_1']
+                event = bcp_balance['oto_2_event_all_1']
+            elif oto_2_buttons_19['launch'].value == "2":
+                conditions = bcp_balance['oto_2_conditions_19_2']
+                event= bcp_balance['oto_2_event_19_2']
+        criteria = bcp_balance['lto_criteria'][2]
+
         try:
-            needed_denies_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][0][
-                'denyByOneOf']
-            needed_denies_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][1][
-                'denyByOneOf']
-            needed_allows_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][0][
-                'allowByOneOf']
-            needed_allows_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][1][
-                'allowByOneOf']
+            needed_denies_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][0]['denyByOneOf']
+            needed_denies_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][1]['denyByOneOf']
+            needed_allows_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][0]['allowByOneOf']
+            needed_allows_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][1]['or'][1]['allowByOneOf']
         except (KeyError, IndexError):
-            needed_denies_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][0][
-                'denyByOneOf']
-            needed_denies_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][1][
-                'denyByOneOf']
-            needed_allows_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][0][
-                'allowByOneOf']
-            needed_allows_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][1][
-                'allowByOneOf']
-        input_denies = [int(val) for val in oto_2_buttons["input_denies_field"].value.split(",")]
-        input_allows = [int(val) for val in oto_2_buttons["input_allows_field"].value.split(",")]
+            needed_denies_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][0]['denyByOneOf']
+            needed_denies_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][1]['denyByOneOf']
+            needed_allows_1 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][0]['allowByOneOf']
+            needed_allows_2 = self.json_data_oto_2['global'][number]['conditions']['filter']['and'][0]['or'][1]['allowByOneOf']
+        input_denies = [int(val) for val in buttons["input_denies_field"].value.split(",")]
+        input_allows = [int(val) for val in buttons["input_allows_field"].value.split(",")]
 
-        for item in self.all_ids_oto_2:
-            if item != this_id:
-                check_bans_should_be.append(item)
-            else:
-                pass
+        self.add_bans(self.all_ids_oto_2, this_id, bans_should_be)
 
-        if (set(input_denies) == set(needed_denies_1) and len(input_denies) == len(needed_denies_1)
-                and set(input_denies) == set(needed_denies_2) and len(input_denies) == len(needed_denies_2)
-                and set(input_allows) == set(needed_allows_1) and len(input_allows) == len(needed_allows_1)
-                and set(input_allows) == set(needed_allows_2) and len(input_allows) == len(needed_allows_2)
-                and set(check_bans_should_be) == set(check_bans_in_json) and len(check_bans_should_be) == len(
-                    check_bans_in_json)):
-            self.update_button(oto_2_buttons[f'button_{number + 1}'], True, 'Баны, denies и allows корректны')
-        else:
-            self.update_button(oto_2_buttons[f'button_{number + 1}'], False, 'Баны, denies или allows некорректны')
+        if set(input_denies) != set(needed_denies_1):
+            self.add_error(errors, 'denies 1', input_denies, needed_denies_1)
+        if set(input_denies) != set(needed_denies_2):
+            self.add_error(errors, 'denies 2', input_denies, needed_denies_2)
+        if set(input_allows) != set(needed_allows_1):
+            self.add_error(errors, 'allows 1', input_allows, needed_allows_1)
+        if set(input_allows) != set(needed_allows_2):
+            self.add_error(errors, 'allows 2', input_allows, needed_allows_2)
+        if set(bans_should_be) != set(bans_in_json):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
+        if not self.equal_ignore(this_conditions, conditions[number], ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this_conditions)
+        self.add_error(errors, 'event', event[number], this_event)
+        self.add_error(errors, 'criteria', criteria, this_criteria)
+
+        self.json_check_end_other(errors, buttons, number, result_text, this_id)
 
     def compare(self, number):
         from buttons import json_compare_buttons_1, json_compare_buttons_2
@@ -1454,14 +1471,85 @@ class JsonOpener:
             self.update_button(buttons[f'button_{number + 1}'], False, 'Баланс некорректный')
             result_text.append(f'{this_id}:\n ER: {event_should_be}\n AR: {this_event}')
 
-        for line in result_text:
-            buttons['errors'].controls.append(
-                ft.Row([
-                    ft.Icon(name=ft.icons.ERROR_OUTLINE, color=ft.colors.RED),
-                    ft.Text(line)
-                ])
-            )
-            buttons['errors'].update()
+        self.errors_output(result_text, buttons)
+
+    def check_comeback(self, number):
+        from buttons import comeback_json_buttons
+        errors, result_text, bans_should_be = [], [], []
+        criteria = bcp_balance['lto_criteria'][2]
+        conditions = bcp_balance['comeback_conditions']
+        ignore_keys = {"banOffers"}
+        if comeback_json_buttons['launch'].value == '1':
+            event = bcp_balance['comeback_event_1']
+        elif comeback_json_buttons['launch'].value == '2':
+            event = bcp_balance['comeback_event_2']
+
+        this_event = self.json_data['global'][number]['event']
+        this_criteria = self.json_data['global'][number]['criteria']
+        this_conditions = self.json_data['global'][number]['conditions']
+        this_id = self.json_data['global'][number]['_id']
+        bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
+
+        self.add_bans(self.ltos_list, this_id, bans_should_be)
+
+        if set(bans_should_be) != set(bans_in_json):
+            self.add_error(errors, 'bans', bans_should_be, bans_in_json)
+        if not self.equal_ignore(this_conditions, conditions[number], ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this_conditions)
+        self.add_error(errors, 'criteria', criteria, this_criteria)
+        self.add_error(errors, 'event', event[number], this_event)
+
+        self.json_check_end_other(errors, comeback_json_buttons, number, result_text, this_id)
+
+    def check_gf_real(self, number):
+        from buttons import gf_real_json_buttons
+        conditions = bcp_balance['gf_real_conditions']
+        event = bcp_balance['gf_real_event']
+        errors, result_text, bans_should_be = [], [], []
+        if gf_real_json_buttons['launch'].value == 'ww':
+            criteria = bcp_balance['lto_criteria'][2]
+            this_compatible_events = self.json_data['global'][number]['conditions']['compatibleEvents'][0]
+        elif gf_real_json_buttons['launch'].value == 'cn':
+            criteria = bcp_balance['cn_criteria'][0]
+            this_compatible_events = self.json_data['global'][number]['conditions']['compatibleEvents'][0]
+        elif gf_real_json_buttons['launch'].value == 'ruby':
+            criteria = {}
+            conditions = bcp_balance['gf_ruby_conditions']
+            event = bcp_balance['gf_ruby_event']
+
+        this_event = self.json_data['global'][number]['event']
+        this_criteria = self.json_data['global'][number]['criteria']
+        this_conditions = self.json_data['global'][number]['conditions']
+        this_id = self.json_data['global'][number]['_id']
+        bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
+        IGNORE_KEYS = {"banOffers", "compatibleEvents"}
+
+        def normalize(obj):
+            if isinstance(obj, dict):
+                return {k: normalize(v) for k, v in sorted(obj.items()) if k not in IGNORE_KEYS}
+            elif isinstance(obj, list):
+                return sorted((normalize(x) for x in obj), key=lambda x: json.dumps(x, sort_keys=True))
+            else:
+                return obj
+
+        def compare_json_ignore_keys(a, b):
+            return normalize(a) == normalize(b)
+
+        self.add_bans(self.ltos_list, this_id, bans_should_be)
+
+        if set(bans_should_be) != set(bans_in_json):
+            errors.append(f"bans: \nER: {bans_should_be}\nAR: {bans_in_json}")
+        if not compare_json_ignore_keys(this_conditions, conditions[number]):
+            errors.append(f"conditions: \nER: {normalize(conditions[number])}\nAR: {normalize(this_conditions)}")
+        self.add_error(errors, "criteria", criteria, this_criteria)
+        self.add_error(errors, "event", event[number], this_event)
+        if gf_real_json_buttons['launch'].value != 'ruby':
+            self.add_error(errors, "compatibleEvents", int(gf_real_json_buttons['compatible_events_field'].value),
+                           this_compatible_events)
+        else:
+            pass
+
+        self.json_check_end_other(errors, gf_real_json_buttons, number, result_text, this_id)
 
 
 headers_get = {

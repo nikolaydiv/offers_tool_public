@@ -1,23 +1,6 @@
-import flet as ft
 from flet import *
-from tags_functions import (get_profile_button_clicked, update_tags_11_functions,
-                            update_tags_10_functions, update_tags_9_functions, update_tags_3_functions,
-                            no_hint_functions, collection_gacha_tags_functions, weapon_lto_functions,
-                            shiny_functions, theo_functions, lto_oto_gc_functions, among_functions,
-                            labyrinth_functions, bogo_functions, new_shiny_functions,
-                            new_among_functions, my_tags_functions, comeback_functions, manual_tags,
-                            update_tags_7_functions, update_tags_10_functions_raskat)
-from json_functions import (bans_11_functions, bans_10_functions, bans_9_functions, bans_3_functions,
-                            tickets_criteria_functions, no_hint_bans_functions,
-                            no_hint_balance_functions, bcp_previous_functions, bcp_actual_functions,
-                            cgp_6_functions, cgp_9_functions, check_all_bans_other_wo_field_functions,
-                            check_all_bans_other_with_field_functions, check_oto_2_functions,
-                            compare_functions, among_new_ts_functions, among_average_functions,
-                            labyrinth_balance_ww_functions, labyrinth_balance_cn_functions,
-                            tickets_balance_functions_11, tickets_balance_functions_10,
-                            tickets_balance_functions_9, tickets_balance_functions_3,
-                            tickets_balance_functions_10_extra, bans_7_functions,
-                            tickets_balance_functions_7, bans_10_functions_raskat)
+from tags_functions import *
+from json_functions import *
 
 
 class PageManager:
@@ -259,7 +242,7 @@ new_shiny_buttons = {
     "shiny_5": SendRequestButton(ft.Text("Update tags 5, someTag>150", color=ft.colors.WHITE),
                                  ft.colors.RED, new_shiny_functions["function_5"])}
 
-theo_buttons = {
+usual_theo_tags_buttons = {
     "theo_1": SendRequestButton(ft.Text("Update tags 1, someTag<15", color=ft.colors.WHITE),
                                 ft.colors.GREEN, theo_functions["function_1"]),
     "theo_2": SendRequestButton(ft.Text("Update tags 2, someTag(15-45)", color=ft.colors.WHITE),
@@ -274,6 +257,20 @@ theo_buttons = {
                                         color=ft.colors.WHITE), ft.colors.ORANGE, theo_functions["function_6"]),
     "theo_7": SendRequestButton(ft.Text("Update tags 7, someTag>500", color=ft.colors.WHITE),
                                 ft.colors.RED, theo_functions["function_7"])}
+
+add_theo_tags_buttons = {
+    "theo_1": SendRequestButton(ft.Text("Update tags 1-2, someTag<15", color=ft.colors.WHITE),
+                                ft.colors.GREEN, add_theo_functions["function_1"]),
+    "theo_2": SendRequestButton(ft.Text("Update tags 3, someTag(15-45)/someTag(<14)", color=ft.colors.WHITE),
+                                ft.colors.GREEN, add_theo_functions["function_2"]),
+    "theo_3": SendRequestButton(ft.Text("Update tags 4, someTag(45-100)/someTag(>14)",
+                                        color=ft.colors.WHITE), ft.colors.GREEN, add_theo_functions["function_3"]),
+    "theo_4": SendRequestButton(ft.Text("Update tags 5, someTag(45-100)/someTag(<18)",
+                                        color=ft.colors.WHITE), ft.colors.ORANGE, add_theo_functions["function_4"]),
+    "theo_5": SendRequestButton(ft.Text("Update tags 6, someTag(100-500)/someTag(>18)",
+                                        color=ft.colors.WHITE), ft.colors.ORANGE, add_theo_functions["function_5"]),
+    "theo_6": SendRequestButton(ft.Text("Update tags 7, someTag(100-500)",
+                                        color=ft.colors.WHITE), ft.colors.ORANGE, add_theo_functions["function_6"])}
 
 lto_oto_gc_buttons = {
     "lto_oto_gc_1": SendRequestButton(ft.Text("Update tags 1, someTag<20", color=ft.colors.WHITE),
@@ -468,7 +465,8 @@ tickets_bans_10_buttons_raskat = {
     "ban_10_raskat_18": BanButton(),
     "ban_10_raskat_19": BanButton(),
     "ban_10_raskat_20": BanButton(),
-    'errors': ft.Column()
+    'errors': ft.Column(),
+    'group_b': ft.Checkbox(label='Is GroupB', value=False)
 }
 
 choose_json_button_10_raskat = ft.Row(
@@ -685,7 +683,8 @@ no_hint_bans_buttons = {
     "button_13": BanButton(),
     "button_14": BanButton(),
     "button_15": BanButton(),
-    "button_16": BanButton()
+    "button_16": BanButton(),
+    "errors": ft.Column()
 }
 
 choose_json_button_no_hint = ft.Row(
@@ -711,9 +710,8 @@ no_hint_balance_buttons = {
         on_click=no_hint_balance_functions["download_json"]
     ),
     "description": ft.Text(
-        "Здесь у офферов типа no_hint проверяются lvl start, only_for_buyer, теги, trigger, trigger_param, " +
-        "skin_id, наполнение, criteria, packname и platform." + "\n" +
-        "Вручную проверить на дашборде name, type, ver begin, date_begin, date_finish." + "\n" +
+        "Здесь у офферов типа no_hint полностью проверяются блоки conditions, event и criteria, " + "\n" +
+        "Вручную проверить на дашборде name, type, ver begin, date_begin, date_finish, platform" + "\n" +
         "В начале апдейта словить все офферы в игре, чтобы убедиться, что ни один из энергетиков " +
         "не добавили в store.json"),
     "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
@@ -735,7 +733,8 @@ no_hint_balance_buttons = {
     "button_13": BanButton(),
     "button_14": BanButton(),
     "button_15": BanButton(),
-    "button_16": BanButton()
+    "button_16": BanButton(),
+    "errors": ft.Column()
 }
 
 choose_json_button_no_hint_balance = ft.Row(
@@ -779,7 +778,8 @@ bcp_previous_buttons = {
                                           on_click=bcp_previous_functions["check_all"]),
     'dynamic_items_1': ft.Text(),
     'dynamic_items_2': ft.Text(),
-    'dynamic_items_3': ft.Text()
+    'dynamic_items_3': ft.Text(),
+    'errors': ft.Column()
 }
 
 choose_json_button_bcp_previous = ft.Row(
@@ -793,6 +793,100 @@ choose_json_button_bcp_previous = ft.Row(
             ),
         ),
         bcp_previous_buttons["selected_files"]
+    ]
+)
+
+usual_theo_json_buttons = {
+    "description": ft.Text(
+        f"Полностью проверяются параметры запуска и баны у обычного Тео (не additional)"
+        + "\n" +
+        ""),
+    "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=usual_theo_functions["reset"]),
+    "open_json_button": ft.FilePicker(on_result=usual_theo_functions["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        "Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=usual_theo_functions["download_json"]
+    ),
+    "button_1": BanButton(),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "button_5": BanButton(),
+    "button_6": BanButton(),
+    "button_7": BanButton(),
+    "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
+                                          on_click=usual_theo_functions["check_all"]),
+    "skin_id_field": ft.TextField(width=300, label="skin_id", hint_text="Введи skin_id. Пример: 1016"),
+    "launch": ft.Dropdown(
+        width=100,
+        label='launch',
+        options=[
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2')
+        ]
+    ),
+    "errors": ft.Column(),
+    'group_b': ft.Checkbox(label='Is GroupB', value=False)
+}
+
+choose_json_button_usual_theo = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: usual_theo_json_buttons["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        usual_theo_json_buttons["selected_files"]
+    ]
+)
+
+add_theo_json_buttons = {
+    "description": ft.Text(
+        f"Полностью проверяются параметры запуска, баны и денаи у additional Тео (не usual)"
+        + "\n" +
+        ""),
+    "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=add_theo_json_functions["reset"]),
+    "open_json_button": ft.FilePicker(on_result=add_theo_json_functions["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        "Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=add_theo_json_functions["download_json"]
+    ),
+    "button_1": BanButton(),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "button_5": BanButton(),
+    "button_6": BanButton(),
+    "button_7": BanButton(),
+    "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
+                                          on_click=add_theo_json_functions["check_all"]),
+    "skin_id_field": ft.TextField(width=300, label="skin_id", hint_text="Введи skin_id. Пример: 1016"),
+    "item_id_field": ft.TextField(width=350, label="me access id", hint_text="Введи id доступа МЕ. Пример: 700255"),
+    "input_denies_field": ft.TextField(width=600, label="denies", hint_text="Введи denies через запятую"),
+    "errors": ft.Column(),
+    'group_b': ft.Checkbox(label='Is GroupB', value=False)
+}
+
+choose_json_button_add_theo = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: add_theo_json_buttons["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        add_theo_json_buttons["selected_files"]
     ]
 )
 
@@ -854,7 +948,8 @@ bcp_actual_buttons = {
     "button_6": BanButton(),
     "button_7": BanButton(),
     "button_8": BanButton(),
-    "button_9": BanButton()
+    "button_9": BanButton(),
+    "errors": ft.Column()
 }
 
 choose_json_button_bcp_actual = ft.Row(
@@ -1065,16 +1160,16 @@ choose_json_button_with_field = ft.Row(
     ]
 )
 
-oto_2_buttons = {
-    "open_json_button": ft.FilePicker(on_result=check_oto_2_functions["open_json"]),
+oto_2_buttons_7_18 = {
+    "open_json_button": ft.FilePicker(on_result=check_oto_2_7_18_functions["open_json"]),
     "selected_files": ft.Text(),
     "upload_json_button": ft.ElevatedButton(
         "Загрузить JSON",
         icon=ft.icons.UPLOAD,
-        on_click=check_oto_2_functions["download_json"]
+        on_click=check_oto_2_7_18_functions["download_json"]
     ),
     "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
-                                      on_click=check_oto_2_functions["reset"]),
+                                      on_click=check_oto_2_7_18_functions["reset"]),
     "button_1": BanButton(),
     "input_denies_field": ft.TextField(width=600, label="denies", hint_text="Введи denies через запятую"),
     "input_allows_field": ft.TextField(width=600, label="allows", hint_text="Введи allows через запятую"),
@@ -1089,20 +1184,79 @@ oto_2_buttons = {
     "button_10": BanButton(),
     "button_11": BanButton(),
     "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
-                                          on_click=check_oto_2_functions["check_all"])
+                                          on_click=check_oto_2_7_18_functions["check_all"]),
+    "launch": ft.Dropdown(
+        width=100,
+        label='launch',
+        options=[
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2')
+        ]
+    ),
+    "errors": ft.Column()
 }
 
-choose_json_button_oto_2 = ft.Row(
+choose_json_button_oto_2_7_18 = ft.Row(
     [
         ft.ElevatedButton(
             "Выбрать JSON",
             icon=ft.icons.FILE_OPEN,
-            on_click=lambda _: oto_2_buttons["open_json_button"].pick_files(
+            on_click=lambda _: oto_2_buttons_7_18["open_json_button"].pick_files(
                 allow_multiple=False,
                 allowed_extensions=["json"]
             ),
         ),
-        oto_2_buttons["selected_files"]
+        oto_2_buttons_7_18["selected_files"]
+    ]
+)
+
+oto_2_buttons_19 = {
+    "open_json_button": ft.FilePicker(on_result=check_oto_2_19_functions["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        "Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=check_oto_2_19_functions["download_json"]
+    ),
+    "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=check_oto_2_19_functions["reset"]),
+    "button_1": BanButton(),
+    "input_denies_field": ft.TextField(width=600, label="denies", hint_text="Введи denies через запятую"),
+    "input_allows_field": ft.TextField(width=600, label="allows", hint_text="Введи allows через запятую"),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "button_5": BanButton(),
+    "button_6": BanButton(),
+    "button_7": BanButton(),
+    "button_8": BanButton(),
+    "button_9": BanButton(),
+    "button_10": BanButton(),
+    "button_11": BanButton(),
+    "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
+                                          on_click=check_oto_2_19_functions["check_all"]),
+    "launch": ft.Dropdown(
+        width=100,
+        label='launch',
+        options=[
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2')
+        ]
+    ),
+    "errors": ft.Column()
+}
+
+choose_json_button_oto_2_19 = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: oto_2_buttons_19["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        oto_2_buttons_19["selected_files"]
     ]
 )
 
@@ -1775,5 +1929,109 @@ choose_json_button_tickets_balance_checker_3 = ft.Row(
             ),
         ),
         tickets_balance_checker_buttons_3["selected_files"]
+    ]
+)
+
+comeback_json_buttons = {
+    "description": ft.Text(
+        f"Полностью проверяются параметры запуска и баны у comeback оффера"
+        + "\n" +
+        ""),
+    "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=comeback_json_functions["reset"]),
+    "open_json_button": ft.FilePicker(on_result=comeback_json_functions["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        "Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=comeback_json_functions["download_json"]
+    ),
+    "button_1": BanButton(),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "button_5": BanButton(),
+    "button_6": BanButton(),
+    "button_7": BanButton(),
+    "button_8": BanButton(),
+    "button_9": BanButton(),
+    "button_10": BanButton(),
+    "button_11": BanButton(),
+    "button_12": BanButton(),
+    "button_13": BanButton(),
+    "button_14": BanButton(),
+    "button_15": BanButton(),
+    "button_16": BanButton(),
+    "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
+                                          on_click=comeback_json_functions["check_all"]),
+    "launch": ft.Dropdown(
+        width=100,
+        label='launch',
+        options=[
+            ft.dropdown.Option('1'),
+            ft.dropdown.Option('2')
+        ]
+    ),
+    "errors": ft.Column()
+}
+
+choose_json_button_comeback_json = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: comeback_json_buttons["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        comeback_json_buttons["selected_files"]
+    ]
+)
+
+gf_real_json_buttons = {
+    "description": ft.Text(
+        f"Полностью проверяются параметры запуска и баны у gf оффера"
+        + "\n" +
+        ""),
+    "reset_button": ft.ElevatedButton("Reset", icon=ft.icons.LOCK_RESET,
+                                      on_click=gf_real_json_functions["reset"]),
+    "open_json_button": ft.FilePicker(on_result=gf_real_json_functions["open_json"]),
+    "selected_files": ft.Text(),
+    "upload_json_button": ft.ElevatedButton(
+        "Загрузить JSON",
+        icon=ft.icons.UPLOAD,
+        on_click=gf_real_json_functions["download_json"]
+    ),
+    "button_1": BanButton(),
+    "button_2": BanButton(),
+    "button_3": BanButton(),
+    "button_4": BanButton(),
+    "check_all_button": ft.ElevatedButton("Check all", icon=ft.icons.ALL_INBOX,
+                                          on_click=gf_real_json_functions["check_all"]),
+    "launch": ft.Dropdown(
+        width=100,
+        label='launch',
+        options=[
+            ft.dropdown.Option('ww'),
+            ft.dropdown.Option('cn'),
+            ft.dropdown.Option('ruby')
+        ]
+    ),
+    "compatible_events_field": ft.TextField(width=300, label="compatibleEvents", hint_text="Введи id ивента. Для ruby не надо"),
+    "errors": ft.Column()
+}
+
+choose_json_button_gf_real_json = ft.Row(
+    [
+        ft.ElevatedButton(
+            "Выбрать JSON",
+            icon=ft.icons.FILE_OPEN,
+            on_click=lambda _: gf_real_json_buttons["open_json_button"].pick_files(
+                allow_multiple=False,
+                allowed_extensions=["json"]
+            ),
+        ),
+        gf_real_json_buttons["selected_files"]
     ]
 )

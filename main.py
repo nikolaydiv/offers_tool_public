@@ -1,36 +1,4 @@
-import flet as ft
-from flet import *
-from buttons import (PageManager, get_profile_buttons, update_tags_11_buttons, update_tags_10_buttons,
-                                    update_tags_9_buttons, update_tags_3_buttons, no_hint_buttons,
-                                    collection_gacha_tags_buttons, weapon_lto_buttons, shiny_buttons, theo_buttons,
-                                    lto_oto_gc_buttons, among_buttons, labyrinth_buttons, bogo_buttons,
-                                    tickets_bans_11_buttons, choose_json_button_11, tickets_bans_10_buttons,
-                                    choose_json_button_10, tickets_bans_9_buttons, choose_json_button_9,
-                                    tickets_bans_3_buttons, choose_json_button_3, tickets_criteria_buttons,
-                                    choose_json_button_tickets_criteria, no_hint_bans_buttons,
-                                    choose_json_button_no_hint, no_hint_balance_buttons,
-                                    choose_json_button_no_hint_balance, bcp_previous_buttons,
-                                    choose_json_button_bcp_previous, bcp_actual_buttons, choose_json_button_bcp_actual,
-                                    cgp_6_buttons, choose_json_button_cgp_6, cgp_9_buttons, choose_json_button_cgp_9,
-                                    other_bans_wo_field_buttons, choose_json_button_other_wo_field,
-                                    other_bans_with_field_buttons, choose_json_button_with_field, new_shiny_buttons,
-                                    new_among_buttons, my_tags_buttons, comeback_buttons, manual_tags_buttons,
-                                    oto_2_buttons, choose_json_button_oto_2, json_compare_buttons_1,
-                                    json_compare_buttons_2, choose_json_compare_button, among_balance_new_tc_buttons,
-                                    choose_json_button_among_balance_new_ts, among_balance_average_buttons,
-                                    choose_json_button_among_balance_average, labyrinth_balance_ww_buttons,
-                                    choose_json_button_labyrinth_balance_ww, labyrinth_balance_cn_buttons,
-                                    choose_json_button_labyrinth_balance_cn, tickets_balance_checker_buttons_11,
-                                    choose_json_button_tickets_balance_checker_11, tickets_balance_checker_buttons_10,
-                                    choose_json_button_tickets_balance_checker_10, tickets_balance_checker_buttons_9,
-                                    choose_json_button_tickets_balance_checker_9, tickets_balance_checker_buttons_3,
-                                    choose_json_button_tickets_balance_checker_3,
-                                    tickets_balance_checker_buttons_10_extra,
-                                    choose_json_button_tickets_balance_checker_10_extra,
-                                    update_tags_7_buttons, tickets_bans_7_buttons, tickets_balance_checker_buttons_7,
-                                    choose_json_button_7, choose_json_button_tickets_balance_checker_7,
-                                    update_tags_10_buttons_raskat, tickets_bans_10_buttons_raskat,
-                                    choose_json_button_10_raskat)
+from buttons import *
 
 
 def boss_page(page: ft.Page):
@@ -391,6 +359,7 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[tickets_bans_10_buttons_raskat["upload_json_button_10"],
+                                             tickets_bans_10_buttons_raskat['group_b'],
                                              tickets_bans_10_buttons_raskat["check_all_bans_button_10"]])
                 ),
                 Container(
@@ -586,63 +555,145 @@ def boss_page(page: ft.Page):
         )
     )
 
-    # Подвкладка OTO2
-    oto_2_content = Container(
+    # Подвкладка OTO2 7-18
+    oto_2_7_18 = Container(
         content=Column(
             scroll=True,
             controls=[
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["reset_button"]],
+                    content=ft.Row(controls=[oto_2_buttons_7_18["reset_button"]],
                                    alignment=ft.MainAxisAlignment.END)
                 ),
                 Container(
-                    content=oto_2_buttons["open_json_button"]
+                    content=oto_2_buttons_7_18["open_json_button"]
                 ),
                 Container(
-                    content=ft.Row(controls=[choose_json_button_oto_2,
-                                             oto_2_buttons["selected_files"]])
+                    content=ft.Row(controls=[choose_json_button_oto_2_7_18,
+                                             oto_2_buttons_7_18["selected_files"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["upload_json_button"],
-                                             oto_2_buttons["check_all_button"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["upload_json_button"],
+                                             oto_2_buttons_7_18['launch'],
+                                             oto_2_buttons_7_18["check_all_button"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_1"],
-                                             oto_2_buttons["input_denies_field"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_1"],
+                                             oto_2_buttons_7_18["input_denies_field"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_2"],
-                                             oto_2_buttons["input_allows_field"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_2"],
+                                             oto_2_buttons_7_18["input_allows_field"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_3"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_3"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_4"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_4"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_5"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_5"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_6"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_6"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_7"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_7"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_8"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_8"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_9"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_9"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_10"]])
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_10"]])
                 ),
                 Container(
-                    content=ft.Row(controls=[oto_2_buttons["button_11"]])
-                )
+                    content=ft.Row(controls=[oto_2_buttons_7_18["button_11"]])
+                ),
+                oto_2_buttons_7_18['errors']
             ]
         )
+    )
+
+    # Подвкладка OTO2 19+
+    oto_2_19 = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=oto_2_buttons_19["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_oto_2_19,
+                                             oto_2_buttons_19["selected_files"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["upload_json_button"],
+                                             oto_2_buttons_19['launch'],
+                                             oto_2_buttons_19["check_all_button"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_1"],
+                                             oto_2_buttons_19["input_denies_field"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_2"],
+                                             oto_2_buttons_19["input_allows_field"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_3"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_4"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_5"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_6"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_7"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_8"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_9"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_10"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[oto_2_buttons_19["button_11"]])
+                ),
+                oto_2_buttons_19['errors']
+            ]
+        )
+    )
+
+    # Вкладка OTO 2
+    oto_2 = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text='7-18',
+                icon=ft.icons.SEVEN_K,
+                content=oto_2_7_18
+            ),
+            ft.Tab(
+                text='19+',
+                icon=ft.icons.NINETEEN_MP,
+                content=oto_2_19
+            )
+        ],
+        expand=1
     )
 
     # Подвкладка COMPARE
@@ -1372,7 +1423,7 @@ def boss_page(page: ft.Page):
             ft.Tab(
                 text="OTO 2",
                 icon=ft.icons.LIBRARY_ADD,
-                content=oto_2_content
+                content=oto_2
             ),
             ft.Tab(
                 text="COMPARE",
@@ -1475,7 +1526,8 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[no_hint_bans_buttons["button_16"]])
-                )
+                ),
+                no_hint_bans_buttons['errors']
             ]
         )
     )
@@ -1551,7 +1603,8 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[no_hint_balance_buttons["button_16"]])
-                )
+                ),
+                no_hint_balance_buttons["errors"]
             ]
         )
     )
@@ -1647,7 +1700,8 @@ def boss_page(page: ft.Page):
                 Container(
                     content=ft.Row(controls=[bcp_previous_buttons["button_9"],
                                              bcp_previous_buttons['dynamic_items_3']])
-                )
+                ),
+                bcp_previous_buttons["errors"]
             ]
         )
     )
@@ -1706,7 +1760,8 @@ def boss_page(page: ft.Page):
                 ),
                 Container(
                     content=ft.Row(controls=[bcp_actual_buttons["button_9"]])
-                )
+                ),
+                bcp_actual_buttons["errors"]
             ]
         )
     )
@@ -1915,34 +1970,227 @@ def boss_page(page: ft.Page):
         )
     )
 
-    # Подвкладка THEO
-    theo_content = Container(
+    # Подвкладка USUAL THEO TAGS
+    usual_theo_tags = Container(
         content=Column(
             scroll=True,
             controls=[
                 Container(
-                    content=theo_buttons["theo_1"]
+                    content=usual_theo_tags_buttons["theo_1"]
                 ),
                 Container(
-                    content=theo_buttons["theo_2"]
+                    content=usual_theo_tags_buttons["theo_2"]
                 ),
                 Container(
-                    content=theo_buttons["theo_3"]
+                    content=usual_theo_tags_buttons["theo_3"]
                 ),
                 Container(
-                    content=theo_buttons["theo_4"]
+                    content=usual_theo_tags_buttons["theo_4"]
                 ),
                 Container(
-                    content=theo_buttons["theo_5"]
+                    content=usual_theo_tags_buttons["theo_5"]
                 ),
                 Container(
-                    content=theo_buttons["theo_6"]
+                    content=usual_theo_tags_buttons["theo_6"]
                 ),
                 Container(
-                    content=theo_buttons["theo_7"]
+                    content=usual_theo_tags_buttons["theo_7"]
                 )
             ]
         )
+    )
+
+    # Подкладка THEO JSON USUAL
+    usual_theo_json = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["description"]],
+                                   alignment=ft.MainAxisAlignment.CENTER)
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=usual_theo_json_buttons["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_usual_theo,
+                                             usual_theo_json_buttons["selected_files"]]),
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["skin_id_field"],
+                                             usual_theo_json_buttons["launch"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["upload_json_button"],
+                                             usual_theo_json_buttons['group_b'],
+                                             usual_theo_json_buttons["check_all_button"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_1"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_2"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_3"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_4"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_5"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_6"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[usual_theo_json_buttons["button_7"]])
+                ),
+                usual_theo_json_buttons["errors"]
+            ]
+        )
+    )
+
+    # Подвкладка ADD THEO TAGS
+    add_theo_tags = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=add_theo_tags_buttons["theo_1"]
+                ),
+                Container(
+                    content=add_theo_tags_buttons["theo_2"]
+                ),
+                Container(
+                    content=add_theo_tags_buttons["theo_3"]
+                ),
+                Container(
+                    content=add_theo_tags_buttons["theo_4"]
+                ),
+                Container(
+                    content=add_theo_tags_buttons["theo_5"]
+                ),
+                Container(
+                    content=add_theo_tags_buttons["theo_6"]
+                )
+            ]
+        )
+    )
+
+    # Подкладка ADD THEO JSON USUAL
+    add_theo_json = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["description"]],
+                                   alignment=ft.MainAxisAlignment.CENTER)
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=add_theo_json_buttons["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_add_theo,
+                                             add_theo_json_buttons["selected_files"]]),
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["skin_id_field"],
+                                             add_theo_json_buttons["item_id_field"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["input_denies_field"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["upload_json_button"],
+                                             add_theo_json_buttons['group_b'],
+                                             add_theo_json_buttons["check_all_button"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_1"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_2"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_3"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_4"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_5"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_6"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[add_theo_json_buttons["button_7"]])
+                ),
+                add_theo_json_buttons["errors"]
+            ]
+        )
+    )
+
+    # Вкладка ADD THEO
+    tab_add_theo = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text="tags",
+                content=add_theo_tags
+            ),
+            ft.Tab(
+                text="json",
+                content=add_theo_json
+            )
+        ],
+        expand=1
+    )
+
+    # Вкладка USUAL THEO
+    tab_usual_theo = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text="tags",
+                content=usual_theo_tags
+            ),
+            ft.Tab(
+                text="json",
+                content=usual_theo_json
+            )
+        ],
+        expand=1
+    )
+
+    # Вкладка THEO
+    tab_theo = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text="usual",
+                content=tab_usual_theo,
+                icon=ft.icons.VIEW_DAY
+            ),
+            ft.Tab(
+                text="add",
+                content=tab_add_theo,
+                icon=ft.icons.NEW_RELEASES
+            )
+        ],
+        expand=1
     )
 
     # Вкладка PIGGY BANK
@@ -1960,7 +2208,8 @@ def boss_page(page: ft.Page):
             ),
             ft.Tab(
                 text="THEO",
-                content=theo_content
+                content=tab_theo,
+                icon=ft.icons.PETS
             )
         ],
         expand=1
@@ -2291,8 +2540,8 @@ def boss_page(page: ft.Page):
         )
     )
 
-    # Вкладка COMEBACK
-    comeback_content = Container(
+    # Вкладка COMEBACK tags
+    comeback_tags = Container(
         content=Column(
             controls=[
                 Container(
@@ -2309,6 +2558,146 @@ def boss_page(page: ft.Page):
                 )
             ]
         )
+    )
+
+    # Подкладка COMEBACK JSON
+    comeback_json = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["description"]],
+                                   alignment=ft.MainAxisAlignment.CENTER)
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=comeback_json_buttons["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_comeback_json,
+                                             comeback_json_buttons["selected_files"],
+                                             comeback_json_buttons["launch"]]),
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["upload_json_button"],
+                                             comeback_json_buttons["check_all_button"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_1"],
+                                             comeback_json_buttons["button_9"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_2"],
+                                             comeback_json_buttons["button_10"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_3"],
+                                             comeback_json_buttons["button_11"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_4"],
+                                             comeback_json_buttons["button_12"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_5"],
+                                             comeback_json_buttons["button_13"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_6"],
+                                             comeback_json_buttons["button_14"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_7"],
+                                             comeback_json_buttons["button_15"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[comeback_json_buttons["button_8"],
+                                             comeback_json_buttons["button_16"]])
+                ),
+                comeback_json_buttons["errors"]
+            ]
+        )
+    )
+
+    # Вкладка COMEBACK
+
+    tab_comeback = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text="tags",
+                icon=ft.icons.TAG,
+                content=comeback_tags
+            ),
+            ft.Tab(
+                text="json",
+                icon=ft.icons.JAVASCRIPT_SHARP,
+                content=comeback_json
+            )
+        ],
+        expand=1
+    )
+
+    # Подкладка GF REAL JSON
+    gf_real_json = Container(
+        content=Column(
+            scroll=True,
+            controls=[
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["description"]],
+                                   alignment=ft.MainAxisAlignment.CENTER)
+                ),
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["reset_button"]],
+                                   alignment=ft.MainAxisAlignment.END)
+                ),
+                Container(
+                    content=gf_real_json_buttons["open_json_button"]
+                ),
+                Container(
+                    content=ft.Row(controls=[choose_json_button_gf_real_json,
+                                             gf_real_json_buttons["selected_files"],
+                                             gf_real_json_buttons["launch"]]),
+                ),
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["upload_json_button"],
+                                             gf_real_json_buttons["compatible_events_field"],
+                                             gf_real_json_buttons["check_all_button"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["button_1"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["button_2"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["button_3"]])
+                ),
+                Container(
+                    content=ft.Row(controls=[gf_real_json_buttons["button_4"]])
+                ),
+                gf_real_json_buttons['errors']
+            ]
+        )
+    )
+
+    # Вкладка GF
+
+    tab_gf = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text="GF REAL",
+                icon=ft.icons.MONEY,
+                content=gf_real_json
+            )
+        ],
+        expand=1
     )
 
     # Подвкладка OTHER BANS WO FIELD
@@ -2618,7 +3007,12 @@ def boss_page(page: ft.Page):
             ft.Tab(
                 text="COMEBACK",
                 icon=ft.icons.BACK_HAND,
-                content=comeback_content
+                content=tab_comeback
+            ),
+            ft.Tab(
+                text="GF",
+                icon=ft.icons.ARROW_UPWARD,
+                content=tab_gf
             ),
             ft.Tab(
                 text="OTHER BANS",
