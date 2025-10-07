@@ -2018,6 +2018,14 @@ gf_real_json_buttons = {
             ft.dropdown.Option('ruby')
         ]
     ),
+    "day": ft.Dropdown(
+        width=100,
+        label='day',
+        options=[
+            ft.dropdown.Option('9'),
+            ft.dropdown.Option('23')
+        ]
+    ),
     "compatible_events_field": ft.TextField(width=300, label="compatibleEvents", hint_text="Введи id ивента. Для ruby не надо"),
     "errors": ft.Column()
 }

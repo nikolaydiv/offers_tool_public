@@ -1505,7 +1505,13 @@ class JsonOpener:
         from buttons import gf_real_json_buttons
         conditions = bcp_balance['gf_real_conditions']
         event = bcp_balance['gf_real_event']
+        ignore_keys = {"banOffers", "compatibleEvents"}
         errors, result_text, bans_should_be = [], [], []
+
+        if gf_real_json_buttons['day'].value == '9':
+            conditions = bcp_balance['gf_real_conditions_9']
+        elif gf_real_json_buttons['day'].value == '23':
+            conditions = bcp_balance['gf_real_conditions_23']
         if gf_real_json_buttons['launch'].value == 'ww':
             criteria = bcp_balance['lto_criteria'][2]
             this_compatible_events = self.json_data['global'][number]['conditions']['compatibleEvents'][0]
@@ -1514,38 +1520,28 @@ class JsonOpener:
             this_compatible_events = self.json_data['global'][number]['conditions']['compatibleEvents'][0]
         elif gf_real_json_buttons['launch'].value == 'ruby':
             criteria = {}
-            conditions = bcp_balance['gf_ruby_conditions']
             event = bcp_balance['gf_ruby_event']
+            if gf_real_json_buttons['day'].value == '9':
+                conditions = bcp_balance['gf_ruby_conditions_9']
+            elif gf_real_json_buttons['day'].value == '23':
+                conditions = bcp_balance['gf_ruby_conditions_23']
 
         this_event = self.json_data['global'][number]['event']
         this_criteria = self.json_data['global'][number]['criteria']
         this_conditions = self.json_data['global'][number]['conditions']
         this_id = self.json_data['global'][number]['_id']
         bans_in_json = self.json_data['global'][number]['conditions']['banOffers']
-        IGNORE_KEYS = {"banOffers", "compatibleEvents"}
-
-        def normalize(obj):
-            if isinstance(obj, dict):
-                return {k: normalize(v) for k, v in sorted(obj.items()) if k not in IGNORE_KEYS}
-            elif isinstance(obj, list):
-                return sorted((normalize(x) for x in obj), key=lambda x: json.dumps(x, sort_keys=True))
-            else:
-                return obj
-
-        def compare_json_ignore_keys(a, b):
-            return normalize(a) == normalize(b)
 
         self.add_bans(self.ltos_list, this_id, bans_should_be)
 
         if set(bans_should_be) != set(bans_in_json):
             errors.append(f"bans: \nER: {bans_should_be}\nAR: {bans_in_json}")
-        if not compare_json_ignore_keys(this_conditions, conditions[number]):
-            errors.append(f"conditions: \nER: {normalize(conditions[number])}\nAR: {normalize(this_conditions)}")
+        if not self.equal_ignore(this_conditions, conditions[number], ignore_keys):
+            self.add_error(errors, 'conditions', conditions[number], this_conditions)
         self.add_error(errors, "criteria", criteria, this_criteria)
         self.add_error(errors, "event", event[number], this_event)
         if gf_real_json_buttons['launch'].value != 'ruby':
-            self.add_error(errors, "compatibleEvents", int(gf_real_json_buttons['compatible_events_field'].value),
-                           this_compatible_events)
+            self.add_error(errors, "compatibleEvents", int(gf_real_json_buttons['compatible_events_field'].value),this_compatible_events)
         else:
             pass
 
